@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"haoxueren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1、 大学时期，我的专业是世界经济。那个专业需要学习《经济史》，了解古代的人们怎么挣钱和花钱。 《经济史》的课程很有趣，读完以后，看待历史的眼光会不一样。 以前，我觉得政治最重要，决定了历史的变迁。学了《经济史》，我认识到，经济比政治更重要。政治人物只是舞台上的演员，剧情走向早由经济因素决定了。 2、 举例来说，美国南北战争的根本原因就是经济。北方发展制造业，缺乏雇工，迫切希望南方种植园释放黑奴，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阮一峰：技术决定历史">
+<meta property="og:url" content="http://haoxueren.github.com/2017/05/23/%E9%98%AE%E4%B8%80%E5%B3%B0%EF%BC%9A%E6%8A%80%E6%9C%AF%E5%86%B3%E5%AE%9A%E5%8E%86%E5%8F%B2/index.html">
+<meta property="og:site_name" content="好学人的博客">
+<meta property="og:description" content="1、 大学时期，我的专业是世界经济。那个专业需要学习《经济史》，了解古代的人们怎么挣钱和花钱。 《经济史》的课程很有趣，读完以后，看待历史的眼光会不一样。 以前，我觉得政治最重要，决定了历史的变迁。学了《经济史》，我认识到，经济比政治更重要。政治人物只是舞台上的演员，剧情走向早由经济因素决定了。 2、 举例来说，美国南北战争的根本原因就是经济。北方发展制造业，缺乏雇工，迫切希望南方种植园释放黑奴，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.ruanyifeng.com/blogimg/asset/2017/bg2017052103.jpg">
+<meta property="og:image" content="https://www.ruanyifeng.com/blogimg/asset/2017/bg2017052204.png">
+<meta property="article:published_time" content="2017-05-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2017-05-22T16:00:00.000Z">
+<meta property="article:author" content="Haoxueren">
+<meta property="article:tag" content="阮一峰">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.ruanyifeng.com/blogimg/asset/2017/bg2017052103.jpg">
+
+<link rel="canonical" href="http://haoxueren.github.com/2017/05/23/%E9%98%AE%E4%B8%80%E5%B3%B0%EF%BC%9A%E6%8A%80%E6%9C%AF%E5%86%B3%E5%AE%9A%E5%8E%86%E5%8F%B2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>阮一峰：技术决定历史 | 好学人的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">好学人的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2017/05/23/%E9%98%AE%E4%B8%80%E5%B3%B0%EF%BC%9A%E6%8A%80%E6%9C%AF%E5%86%B3%E5%AE%9A%E5%8E%86%E5%8F%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阮一峰：技术决定历史
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-05-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-23T00:00:00+08:00">2017-05-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>1、</p>
+<p>大学时期，我的专业是世界经济。那个专业需要学习《经济史》，了解古代的人们怎么挣钱和花钱。</p>
+<p>《经济史》的课程很有趣，读完以后，看待历史的眼光会不一样。</p>
+<p>以前，我觉得政治最重要，决定了历史的变迁。学了《经济史》，我认识到，经济比政治更重要。政治人物只是舞台上的演员，剧情走向早由经济因素决定了。</p>
+<p>2、</p>
+<p>举例来说，美国南北战争的根本原因就是经济。北方发展制造业，缺乏雇工，迫切希望南方种植园释放黑奴，让他们到工厂里面当工人。南方庄园主坚决不同意，一旦奴隶制度消失了，谁会愿意忍受烈日高温，到地里采棉花？如果棉花种植成本大幅上涨，就无法向欧洲出口，庄园主就会破产。</p>
+<p>再比如，大明王朝的灭亡原因也是经济。历史学家黄仁宇指出，明朝财政非常困难，根本无力抵抗各种入侵。</p>
+<blockquote>
+<p>“在黄仁宇看来，明朝十六世纪的财税困境，在于低下的税收管理水平无法适应其极度复杂的税收结构，导致了财政系统全国范围内的混乱局面。而“奉行成例”的僵化思维又使任何有效的改革无法实行，从而使政府税收长期不足，公共行政能力十分低下，无法有效地行使政府职能，最终导致灾难性的后果。”</p>
+</blockquote>
+<p>3、</p>
+<p>很长一段日子，我都持有这种“经济决定论”，进而沉迷于证券市场，相信“股市是经济的晴雨表”。就这样，浪费了很多时间。</p>
+<p>后来，全球金融危机爆发，各国纷纷出台刺激经济的政策。这件事让我很困惑：经济学已经有几百年的历史，早就成了一门“科学”，但是为什么没能防止（甚至都没预测到）这么大规模的经济危机呢？</p>
+<p>危机爆发之后，经济学家还在争论不休，回答不了几个最基本的问题：</p>
+<blockquote>
+<ul>
+<li>危机会持续多久？</li>
+<li>如何解决危机？</li>
+<li>类似的危机将来会不会再发生？</li>
+</ul>
+</blockquote>
+<p>我对经济学的信心，就是从那个时候开始动摇和崩溃的。</p>
+<p>4、</p>
+<p>在学校期间，我学会了制作网页，架设了个人网站。离开学校以后，更是亲身感受到了，互联网技术对整个社会和个人命运的巨大改变。</p>
+<p>对我来说，技术变得比经济学更有吸引力了。渐渐地，我不再阅读经济学书籍了，转而大量阅读技术书籍。</p>
+<p>熟悉科技史以后，我看待历史的观点，再一次发生了巨大的变化。我现在认为，主导历史的因素，短期（一年到几年）是政治，中期（几年到几十年）是经济，长期（几十年到几百年）则是技术。</p>
+<p>长期来看，政治和经济都不太重要，影响不了趋势，真正起决定性作用的是技术。政治和经济只能改变资源的分配和价格，只有技术才能创造出新东西。政治和经济只能使人类在平面上移动，只有技术才能使得人类向上提升，进入下一个阶段。</p>
+<p>5、</p>
+<p>我发现，人类的每一次大发展，都是技术推动的。</p>
+<blockquote>
+<p>（1）石器时代，人类学会了加工石材，有了最基本的工具，可以定居生活了，进入了氏族社会。</p>
+<p>（2）等到掌握了粮食生产技术，人类有了多余的粮食，氏族就分化出了阶层，产生了贵族和首领。</p>
+<p>（3）铁器时代，人类掌握了冶炼技术，能生产更好的农具和武器，拥有铁器的氏族开始征服其他氏族，慢慢演变成封建王国。</p>
+<p>（4）欧洲的封建时期有1000多年，中国有2000多年，为什么会延续这么长？就是因为这段时间，技术没有重大突破。</p>
+<p>（5）等到欧洲人掌握了造纸术和印刷术，新思想第一次可以廉价地大规模传播（此前都是羊皮的手抄书，一般人看不到），黑暗的中世纪因此终结，文艺复兴开始，人类进入近代社会。</p>
+<p>（6）火药的出现，使得骑兵和城堡变得毫无作用，一小股军队就会拥有巨大的杀伤力，诸侯林立的欧洲开始统一为一个个民族国家，现代意义上的政府出现了。</p>
+<p>（7）工业革命始于人类能够制造蒸汽机，生产力提升了一个数量级，要求大规模的社会分工和交换，由此诞生了资本主义制度，直到今天。</p>
+</blockquote>
+<p>总之，重大的新技术一旦出现，政治制度和经济制度——不管主动或被动——最终都会为之重构，让这项技术的威力发挥到最大。这就是为什么技术是最终的决定因素，决定了人类社会的演变。</p>
+<p>6、</p>
+<p>今天，我们正身处最新一次、也是最大一次的技术革命：信息技术革命。技术进步的速度日新月异，而且还在加速，这就注定了目前的人类社会也会随之大变。</p>
+<p>很多我们习以为常的事情，都已经完全改变了。15年前，世界市值最大的前五大公司只有一家技术公司，今天已经全部是了。新技术创造了财富，财富也在流向技术。</p>
+<p><img src="https://www.ruanyifeng.com/blogimg/asset/2017/bg2017052103.jpg"></p>
+<p>中国也是如此，2017年中国市值最大的公司，是香港上市的腾讯，第二名是美国上市的阿里巴巴。曾经的巨无霸——中国石油、工商银行、中国移动——都被挤到后面去了。</p>
+<p><img src="https://www.ruanyifeng.com/blogimg/asset/2017/bg2017052204.png"></p>
+<p>时代已经变了，新人和新公司每天都在崛起，旧的公司和制度每天都在没落。技术正在加速重塑人类社会。</p>
+<p>7、</p>
+<p>以色列学者尤瓦尔·赫拉利在《未来简史》一书中感叹：</p>
+<blockquote>
+<p>“现代科技已经让人类拥有了超过远古诸神的力量，我们的后代肯定将拥有神一样的创造力和毁灭力。我们并不知道眼前的道路会把我们引向何方，也不知道我们那些像神一般的后代会是什么样子。”</p>
+</blockquote>
+<p>正如他所说，我们正身处在一个前人从未有过的处境：技术让人类这种渺小的生物，拥有了神一般的力量。这种力量会把我们带到哪里？完全不知道。</p>
+<p>我的心情很矛盾。一方面，对未来的新技术，我感到无比兴奋和期待，就像推特上面一位网友所说。</p>
+<blockquote>
+<p>“一想到我的寿命只有几十年，我就感到特别难过。倒不是因为我害怕死亡，而是因为我将没有机会看到，未来一千年中各种新奇有趣的新技术。”</p>
+</blockquote>
+<p>另一方面，我还有一种不好的预感。人类掌握的技术，已经强大到足以毁灭人类自身，在技术面前，普通人（大多数人都是普通人）已经没有多大用处了。人类的历史将会怎样改变？这不禁令人充满了在劫难逃的担忧。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%98%AE%E4%B8%80%E5%B3%B0/" rel="tag"># 阮一峰</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/04/23/%E9%98%AE%E4%B8%80%E5%B3%B0%EF%BC%9A%E7%86%B5%E2%80%94%E2%80%94%E5%AE%87%E5%AE%99%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%84%E5%88%99/" rel="prev" title="阮一峰：熵——宇宙的终极规则">
+      <i class="fa fa-chevron-left"></i> 阮一峰：熵——宇宙的终极规则
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/03/02/%E5%B8%81%E4%B9%8E%E8%B5%9AKEY%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" rel="next" title="币乎赚KEY的正确姿势">
+      币乎赚KEY的正确姿势 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Haoxueren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haoxueren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"haoxueren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="币安历史资金费率：https:&#x2F;&#x2F;www.binance.com&#x2F;zh-CN&#x2F;futures&#x2F;funding-history&#x2F;1  从币安导出了BTCUSDT(2019.09.10~2022.05.27)的资金费率数据，期间累积收益为51.93%，折合年化收益率为19.13%。  从币安导出了ETHUSDT(2019.11.27~2022.05.27)的资金费率数据，期间累积收益为67.17%，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="资金费率套利研究">
+<meta property="og:url" content="http://haoxueren.github.com/2022/06/03/20220603-%E8%B5%84%E9%87%91%E8%B4%B9%E7%8E%87%E5%A5%97%E5%88%A9%E7%A0%94%E7%A9%B6/index.html">
+<meta property="og:site_name" content="好学人的博客">
+<meta property="og:description" content="币安历史资金费率：https:&#x2F;&#x2F;www.binance.com&#x2F;zh-CN&#x2F;futures&#x2F;funding-history&#x2F;1  从币安导出了BTCUSDT(2019.09.10~2022.05.27)的资金费率数据，期间累积收益为51.93%，折合年化收益率为19.13%。  从币安导出了ETHUSDT(2019.11.27~2022.05.27)的资金费率数据，期间累积收益为67.17%，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-03T02:13:21.000Z">
+<meta property="article:modified_time" content="2022-06-03T02:13:21.000Z">
+<meta property="article:author" content="Haoxueren">
+<meta property="article:tag" content="交易系统">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://haoxueren.github.com/2022/06/03/20220603-%E8%B5%84%E9%87%91%E8%B4%B9%E7%8E%87%E5%A5%97%E5%88%A9%E7%A0%94%E7%A9%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>资金费率套利研究 | 好学人的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">好学人的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2022/06/03/20220603-%E8%B5%84%E9%87%91%E8%B4%B9%E7%8E%87%E5%A5%97%E5%88%A9%E7%A0%94%E7%A9%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          资金费率套利研究
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-06-03 10:13:21" itemprop="dateCreated datePublished" datetime="2022-06-03T10:13:21+08:00">2022-06-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ol>
+<li><p>币安历史资金费率：<a target="_blank" rel="noopener" href="https://www.binance.com/zh-CN/futures/funding-history/1">https://www.binance.com/zh-CN/futures/funding-history/1</a></p>
+</li>
+<li><p>从币安导出了BTCUSDT(<code>2019.09.10~2022.05.27</code>)的资金费率数据，期间累积收益为<code>51.93%</code>，折合年化收益率为<code>19.13%</code>。</p>
+</li>
+<li><p>从币安导出了ETHUSDT(<code>2019.11.27~2022.05.27</code>)的资金费率数据，期间累积收益为<code>67.17%</code>，折合年化收益率为<code>26.87%</code>。</p>
+</li>
+<li><p>从币安导出了BNBUSDT(<code>2020.02.10~2022.06.03</code>)的资金费率数据，期间累积收益为<code>17.74%</code>，折合年化收益率为<code>7.67%</code>。</p>
+</li>
+<li><p>从BTC和ETH的U本位合约资金费率套利的年化收益在20%左右，即使熊市期间，资金费率套利也是有利可图的。这绝对是个很不错的投资标的了。同时也统计了ETH币本位合约的资金费率，年化收益在7%左右。</p>
+</li>
+<li><p>如果下轮行情我的资产突破<code>1000w</code>，我决定拿出<code>100w</code>专门做资金费率套利(正好有个币安子账户)，每月差不多能用2w的收入，我就可以放心辞职了。</p>
+</li>
+<li><p>下表统计了<code>2019~2022</code>期间每月的资金费率，总体而言，ETH要比BTC的收益高一些，每月资金费率的收益如下：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQLite &gt; SELECT STRFTIME(&#x27;%Y-%m&#x27;, DATE), SUM(RATE) FROM FundingRate WHERE FUTURE=&#x27;ETHUSDT 永续&#x27;  GROUP BY STRFTIME(&#x27;%Y-%m&#x27;, DATE) ORDER BY DATE DESC</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">日期</th>
+<th align="center">BTCUSDT</th>
+<th align="center">ETHUSDT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2022-08</td>
+<td align="center">0.1637%</td>
+<td align="center">0.0418%</td>
+</tr>
+<tr>
+<td align="center">2022-07</td>
+<td align="center">0.5965%</td>
+<td align="center">0.3417%</td>
+</tr>
+<tr>
+<td align="center">2022-06</td>
+<td align="center">0.2921%</td>
+<td align="center">-0.0063%</td>
+</tr>
+<tr>
+<td align="center">2022-05</td>
+<td align="center">0.4657%</td>
+<td align="center">0.2372%</td>
+</tr>
+<tr>
+<td align="center">2022-04</td>
+<td align="center">0.2541%</td>
+<td align="center">0.0493%</td>
+</tr>
+<tr>
+<td align="center">2022-03</td>
+<td align="center">0.5010%</td>
+<td align="center">0.6471%</td>
+</tr>
+<tr>
+<td align="center">2022-02</td>
+<td align="center">0.2396%</td>
+<td align="center">0.2176%</td>
+</tr>
+<tr>
+<td align="center">2022-01</td>
+<td align="center">0.5159%</td>
+<td align="center">0.2991%</td>
+</tr>
+<tr>
+<td align="center">2021-12</td>
+<td align="center">0.9138%</td>
+<td align="center">0.8263%</td>
+</tr>
+<tr>
+<td align="center">2021-11</td>
+<td align="center">2.1750%</td>
+<td align="center">1.4962%</td>
+</tr>
+<tr>
+<td align="center">2021-10</td>
+<td align="center">1.9911%</td>
+<td align="center">2.2433%</td>
+</tr>
+<tr>
+<td align="center">2021-09</td>
+<td align="center">1.1533%</td>
+<td align="center">1.5708%</td>
+</tr>
+<tr>
+<td align="center">2021-08</td>
+<td align="center">1.1596%</td>
+<td align="center">1.5107%</td>
+</tr>
+<tr>
+<td align="center">2021-07</td>
+<td align="center">-0.1741</td>
+<td align="center">0.5289%</td>
+</tr>
+<tr>
+<td align="center">2021-06</td>
+<td align="center">0.2416%</td>
+<td align="center">0.5009%</td>
+</tr>
+<tr>
+<td align="center">2021-05</td>
+<td align="center">2.2980%</td>
+<td align="center">2.3031%</td>
+</tr>
+<tr>
+<td align="center">2021-04</td>
+<td align="center">4.5583%</td>
+<td align="center">5.4081%</td>
+</tr>
+<tr>
+<td align="center">2021-03</td>
+<td align="center">3.1657%</td>
+<td align="center">4.3239%</td>
+</tr>
+<tr>
+<td align="center">2021-02</td>
+<td align="center">7.2502%</td>
+<td align="center">8.5877%</td>
+</tr>
+<tr>
+<td align="center">2021-01</td>
+<td align="center">5.9026%</td>
+<td align="center">8.2621%</td>
+</tr>
+<tr>
+<td align="center">2020-12</td>
+<td align="center">2.1141%</td>
+<td align="center">2.9422%</td>
+</tr>
+<tr>
+<td align="center">2020-11</td>
+<td align="center">1.9167%</td>
+<td align="center">3.3277%</td>
+</tr>
+<tr>
+<td align="center">2020-10</td>
+<td align="center">0.5328%</td>
+<td align="center">1.3097%</td>
+</tr>
+<tr>
+<td align="center">2020-09</td>
+<td align="center">0.6738%</td>
+<td align="center">0.9142%</td>
+</tr>
+<tr>
+<td align="center">2020-08</td>
+<td align="center">2.4538%</td>
+<td align="center">4.0759%</td>
+</tr>
+<tr>
+<td align="center">2020-07</td>
+<td align="center">1.9295%</td>
+<td align="center">2.5625%</td>
+</tr>
+<tr>
+<td align="center">2020-06</td>
+<td align="center">0.7463%</td>
+<td align="center">0.9851%</td>
+</tr>
+<tr>
+<td align="center">2020-05</td>
+<td align="center">0.9666%</td>
+<td align="center">1.3040%</td>
+</tr>
+<tr>
+<td align="center">2020-04</td>
+<td align="center">0.0226%</td>
+<td align="center">0.8023%</td>
+</tr>
+<tr>
+<td align="center">2020-03</td>
+<td align="center">-0.4533</td>
+<td align="center">1.0397%</td>
+</tr>
+<tr>
+<td align="center">2020-02</td>
+<td align="center">4.5202%</td>
+<td align="center">6.1853%</td>
+</tr>
+<tr>
+<td align="center">2020-01</td>
+<td align="center">1.7774%</td>
+<td align="center">2.0163%</td>
+</tr>
+<tr>
+<td align="center">2019-12</td>
+<td align="center">0.1871%</td>
+<td align="center">0.8711%</td>
+</tr>
+<tr>
+<td align="center">2019-11</td>
+<td align="center">0.6138%</td>
+<td align="center">-0.0344%</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F/" rel="tag"># 交易系统</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/09/20220309-%E6%80%8E%E6%A0%B7%E6%89%8D%E8%83%BD%E5%9C%A8%E6%8A%95%E8%B5%84%E5%B8%82%E5%9C%BA%E8%B5%9A%E5%88%B0%E5%A4%A7%E9%92%B1%EF%BC%9F/" rel="prev" title="怎样才能在投资市场赚到大钱？">
+      <i class="fa fa-chevron-left"></i> 怎样才能在投资市场赚到大钱？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/06/13/20220613-%E6%88%91%E7%9A%84%E5%90%88%E7%BA%A6%E4%BA%A4%E6%98%93%E5%8E%9F%E5%88%99/" rel="next" title="我的合约交易原则">
+      我的合约交易原则 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Haoxueren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haoxueren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

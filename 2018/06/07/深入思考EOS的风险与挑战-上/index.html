@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"haoxueren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="引言EOS，全称 Enterprise Operation System，是天才程序员BM的第三个创业项目。 BM(Byte Master)的前两个创业项目为BTS和Steem。 EOS致力于成为区块链世界的商业级操作系统，推进区块链应用(DApp)走进千家万户。 EOS财技双全，从诞生那一刻便自带光环，看好EOS的人数不胜数，可谓是币圈的国民公链。  老猫：EOS是区块链行业的超级投资机会。金马">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入思考EOS的风险与挑战(上)">
+<meta property="og:url" content="http://haoxueren.github.com/2018/06/07/%E6%B7%B1%E5%85%A5%E6%80%9D%E8%80%83EOS%E7%9A%84%E9%A3%8E%E9%99%A9%E4%B8%8E%E6%8C%91%E6%88%98-%E4%B8%8A/index.html">
+<meta property="og:site_name" content="好学人的博客">
+<meta property="og:description" content="引言EOS，全称 Enterprise Operation System，是天才程序员BM的第三个创业项目。 BM(Byte Master)的前两个创业项目为BTS和Steem。 EOS致力于成为区块链世界的商业级操作系统，推进区块链应用(DApp)走进千家万户。 EOS财技双全，从诞生那一刻便自带光环，看好EOS的人数不胜数，可谓是币圈的国民公链。  老猫：EOS是区块链行业的超级投资机会。金马">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-07T00:47:00.000Z">
+<meta property="article:modified_time" content="2018-06-07T00:47:00.000Z">
+<meta property="article:author" content="Haoxueren">
+<meta property="article:tag" content="EOS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://haoxueren.github.com/2018/06/07/%E6%B7%B1%E5%85%A5%E6%80%9D%E8%80%83EOS%E7%9A%84%E9%A3%8E%E9%99%A9%E4%B8%8E%E6%8C%91%E6%88%98-%E4%B8%8A/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>深入思考EOS的风险与挑战(上) | 好学人的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">好学人的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2018/06/07/%E6%B7%B1%E5%85%A5%E6%80%9D%E8%80%83EOS%E7%9A%84%E9%A3%8E%E9%99%A9%E4%B8%8E%E6%8C%91%E6%88%98-%E4%B8%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深入思考EOS的风险与挑战(上)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-07 08:47:00" itemprop="dateCreated datePublished" datetime="2018-06-07T08:47:00+08:00">2018-06-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>EOS，全称 Enterprise Operation System，是天才程序员BM的第三个创业项目。</p>
+<p>BM(Byte Master)的前两个创业项目为BTS和Steem。</p>
+<p>EOS致力于成为区块链世界的商业级操作系统，推进区块链应用(DApp)走进千家万户。</p>
+<p>EOS财技双全，从诞生那一刻便自带光环，看好EOS的人数不胜数，可谓是币圈的国民公链。</p>
+<blockquote>
+<p>老猫：EOS是区块链行业的超级投资机会。<br>金马：在奶EOS的路上，我不怕背负骂名。<br>梓岑：囤1000个EOS就够了，你会发现，人一辈子，根本用不完那么多钱。</p>
+</blockquote>
+<p>大智先生也是EOS的坚定支持者，持有一半仓位的EOS，梦想着通过EOS踏上财务自由之路。</p>
+<p>但爱不是让人极其疯狂，而是让人极其理智。</p>
+<p>投资也是如此！</p>
+<p>基于理性的爱情，更容易天长地久；基于理性的投资，更容易财务自由。</p>
+<p>因此，无论外界对EOS的赞美多么高昂，抑或对EOS的抨击多么激烈。我们都不应该让集体的声音，淹没了自己的独立思考。</p>
+<p>鉴于篇幅原因，本文分为上下两篇，上篇探讨EOS的团队和社区方面的风险，下篇探讨EOS的技术风险和生命周期。</p>
+<h1 id="EOS的团队风险"><a href="#EOS的团队风险" class="headerlink" title="EOS的团队风险"></a>EOS的团队风险</h1><p>一个项目的最大风险，莫过于核心人员的流失了。</p>
+<p>BM作为EOS的核心开发人员，有着天才级的技术，同时也有着天才级的脾气。</p>
+<p>一言不合就拂袖而去这种事情，BM曾干过两次。</p>
+<p>对于EOS，BM是会痛改前非呢，还是会重蹈覆辙呢？</p>
+<p>大智先生认为，无论BM作出哪种选择，以下3点是确定的：</p>
+<p>(1) 在经历了BTS和Steem两个项目的一地鸡毛后，BM一定会有所反思和成长。</p>
+<p>同样的挫折，连续发生两次，哪怕BM再怎么天才和自信，也一定会进行自我反思的。</p>
+<p>(2) 在EOS开发完成前，以及在EOS足够稳定和足够健壮前，BM都不会离开项目组。</p>
+<p>技术天才，不见得多么友善正直，但对自己的作品，一定是极其怜惜的；对技术上的难题，一定是有着极强征服欲的。</p>
+<p>(3) 可以肯定，BM不会允许自己的作品成为烂尾楼或豆腐渣工程，留下一世骂名。</p>
+<p>即使有一天，BM要远走高飞，那时的EOS，不敢说已经多么牛逼哄哄，但至少是离开BM也能茁壮成长了。</p>
+<p>至于那些说EOS的最大不确定性是BM离开，其实都是未曾深入思考的人云亦云而已。</p>
+<p>现在回头去看BTS和Steem，不都活得好好的吗？</p>
+<p>综上所述，EOS团队方面的风险，其实很小，而且可控。</p>
+<p>目前EOS的核心功能已经开发完毕，接下来只是一些BUG修复和升级维护工作。</p>
+<h1 id="EOS的社区风险"><a href="#EOS的社区风险" class="headerlink" title="EOS的社区风险"></a>EOS的社区风险</h1><p>EOS的母公司Block.one，为了规避EOS被证券化的风险，提出了“只负责开发和维护，由社区部署和运行”的解决方案。</p>
+<p>有人担心这会导致社区分裂，启动多条EOS主链，导致共识减弱。</p>
+<p><strong>(一)</strong></p>
+<p>首先，启动一条EOS主链很容易，但主链背后若没有21个节点做支持，依然是一条废链。</p>
+<p>其次，EOS的各个社区都是相关利益方，伤害EOS生态就是伤害自己的利益。</p>
+<p>所以，在启动主网这件事情上，大家还是很团结的。虽然也有分歧，但总体上都在为同一个世界，同一个EOS的目标而努力。</p>
+<p>有李笑来老师的朋友圈为证：</p>
+<blockquote>
+<p>中英文社区已经达成一致，所有力量会联合在一起，只为启动一条EOS主链，不会有分叉，其他任何启动主链的行动，都不会再可能得到认可，EOS最终就是我们理想中的那个EOS。</p>
+</blockquote>
+<p><strong>(二)</strong></p>
+<p>鉴于EOS开源免费的特性，随着EOS的发展壮大，几乎一定会出现分叉链。比如一条国际通用链，一条中国特色链。</p>
+<p>我们有中国特色的市场经济，中国特色的互联网，中国特色的安卓系统，一旦时机成熟，搞一条中国特色的EOS公链，自然不在话下。</p>
+<p>鉴于中国巨大的市场规模，中国特色版的EOS公链，很大概率能发展壮大，分叉出来的EOS，也必定价值不菲。</p>
+<p>到时候，EOS不但能下蛋，还能直接生小鸡了！</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>EOS的团队和社区，都是很强大的，这两方面的风险并不大。结论如下：</p>
+<p>1、在EOS成长起来前，BM不会离开。</p>
+<p>2、EOS上线初期，不会启动多条主链。</p>
+<p>但是，EOS确实有一些潜在的风险，下篇文章与大家分享。重点探讨以下3个问题：</p>
+<blockquote>
+<p>1、致命漏洞会摧毁EOS吗？</p>
+<p>2、会有新技术取代EOS吗？</p>
+<p>3、EOS处于哪个发展阶段？</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/EOS/" rel="tag"># EOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/05/30/20180530-%E5%86%85%E5%AE%B9%E6%BF%80%E5%8A%B1%E5%B9%B3%E5%8F%B0%E5%A6%82%E4%BD%95%E7%95%99%E4%BD%8F%E4%BC%98%E7%A7%80%E4%BD%9C%E8%80%85%EF%BC%9F/" rel="prev" title="内容激励平台如何留住优秀作者？">
+      <i class="fa fa-chevron-left"></i> 内容激励平台如何留住优秀作者？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/06/08/%E6%B7%B1%E5%85%A5%E6%80%9D%E8%80%83EOS%E7%9A%84%E9%A3%8E%E9%99%A9%E4%B8%8E%E6%8C%91%E6%88%98-%E4%B8%8B/" rel="next" title="深入思考EOS的风险与挑战(下)">
+      深入思考EOS的风险与挑战(下) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EOS%E7%9A%84%E5%9B%A2%E9%98%9F%E9%A3%8E%E9%99%A9"><span class="nav-number">2.</span> <span class="nav-text">EOS的团队风险</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EOS%E7%9A%84%E7%A4%BE%E5%8C%BA%E9%A3%8E%E9%99%A9"><span class="nav-number">3.</span> <span class="nav-text">EOS的社区风险</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Haoxueren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haoxueren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"haoxueren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文是2015年10月《为什么投资区块链》、2018年7月《寻找圣杯》的延续，彼时比特币的价格分别是245美元、7880美元，而今天2020年12月27日，比特币的价格是26964美元。 预测回顾在《寻找圣杯》一文中，笔者曾做了如下预测： 1）4年内，加密资产总市值逼近或超过黄金，目前黄金的总市值是8万亿美元。可信度90%。2）4年内，单个智能合约平台基础通证的总市值超1万亿美元。可信度70%。3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="咕噜：寻找圣杯2.0(上)">
+<meta property="og:url" content="http://haoxueren.github.com/2020/12/28/%E5%92%95%E5%99%9C%EF%BC%9A%E5%AF%BB%E6%89%BE%E5%9C%A3%E6%9D%AF2.0(%E4%B8%8A)/index.html">
+<meta property="og:site_name" content="好学人的博客">
+<meta property="og:description" content="本文是2015年10月《为什么投资区块链》、2018年7月《寻找圣杯》的延续，彼时比特币的价格分别是245美元、7880美元，而今天2020年12月27日，比特币的价格是26964美元。 预测回顾在《寻找圣杯》一文中，笔者曾做了如下预测： 1）4年内，加密资产总市值逼近或超过黄金，目前黄金的总市值是8万亿美元。可信度90%。2）4年内，单个智能合约平台基础通证的总市值超1万亿美元。可信度70%。3">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://haoxueren.github.com/images/ethbtc-20180730.png">
+<meta property="og:image" content="http://haoxueren.github.com/images/%E7%BE%8E%E8%81%94%E5%82%A8%E8%B5%84%E4%BA%A7%E8%B4%9F%E5%80%BA%E8%A1%A8.png">
+<meta property="article:published_time" content="2020-12-28T04:10:00.000Z">
+<meta property="article:modified_time" content="2020-12-28T04:10:00.000Z">
+<meta property="article:author" content="Haoxueren">
+<meta property="article:tag" content="咕噜">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://haoxueren.github.com/images/ethbtc-20180730.png">
+
+<link rel="canonical" href="http://haoxueren.github.com/2020/12/28/%E5%92%95%E5%99%9C%EF%BC%9A%E5%AF%BB%E6%89%BE%E5%9C%A3%E6%9D%AF2.0(%E4%B8%8A)/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>咕噜：寻找圣杯2.0(上) | 好学人的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">好学人的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2020/12/28/%E5%92%95%E5%99%9C%EF%BC%9A%E5%AF%BB%E6%89%BE%E5%9C%A3%E6%9D%AF2.0(%E4%B8%8A)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          咕噜：寻找圣杯2.0(上)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-28 12:10:00" itemprop="dateCreated datePublished" datetime="2020-12-28T12:10:00+08:00">2020-12-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文是2015年10月《<a target="_blank" rel="noopener" href="https://bihu.com/article/653976">为什么投资区块链</a>》、2018年7月《<a target="_blank" rel="noopener" href="https://bihu.com/article/1019497">寻找圣杯</a>》的延续，彼时比特币的价格分别是245美元、7880美元，而今天2020年12月27日，比特币的价格是26964美元。</p>
+<h1 id="预测回顾"><a href="#预测回顾" class="headerlink" title="预测回顾"></a>预测回顾</h1><p>在《寻找圣杯》一文中，笔者曾做了如下预测：</p>
+<p>1）4年内，加密资产总市值逼近或超过黄金，目前黄金的总市值是8万亿美元。可信度90%。<br>2）4年内，单个智能合约平台基础通证的总市值超1万亿美元。可信度70%。<br>3）8年内，基于区块链的超级应用出现，单个项目的市值超过1万亿美元。可信度50%。</p>
+<p>我们先来一一回顾。</p>
+<p>第一条，在2022年7月28日前加密资产总市值逼近或超过黄金，实现的可能性显著减小。原文中的推测逻辑已经被证伪：“从2011年6月到2017年12月，一共78个月，比特币价格每月增长的几何平均数为8.64%，如果按照历史的涨幅推算未来，那么未来4年大概是53倍，今天比特币的总流通市值为1400亿美元，1400亿 *53=74200亿，也就是7.42万亿美元。”截止今天比特币价格是原文撰写时的3.4倍，每月几何平均涨幅为4.33%，仅为2011年6月至2017年12月这个时期月均涨幅的一半。</p>
+<p>月均4.33%的月均复合涨幅已经是非常非常惊人了，但的确没有保持原来的价格上涨速度。</p>
+<p>其他数字资产的价格更是没能保持原有的涨幅，尤其是以智能合约平台的基础通证为代币，原因笔者会在本文后续探讨。</p>
+<p>第二条，在2022年7月28日前单个智能合约平台基础通证的总市值超1万亿美元，实现的可能性十分渺茫。事后的归因分析，笔者认为根源在于技术进步的速度不及预期，具体将在本文展开讨论。</p>
+<p>第三条，也是当时认为可信度较低的预测，却最有可能实现，而且时间上很可能会大大提前：2026年7月28日前，基于区块链的超级应用单个项目的市值超过1万亿美元。原文中列举了3个潜在的超级应用：a）基于算法的稳定币，b）比特币，c）基于密码学的身份体系。今天比特币的市值是5011亿美元，离1万亿美元只差1倍的涨幅。</p>
+<p>世界是一个复杂系统，超过一定的时间跨度之后的未来是不可预测的，短期的大方向预测尚可，但是针对事物发展演化的速度的预测，着实困难。没错，笔者的确是在为自己预测细节之粗糙寻找台阶。虽然对于这3项预测实现的时间须做大幅调整，但是笔者对于3项预测的可实现性仍然高度乐观。</p>
+<p>本文的上半部分将回顾比特币的过去29个月和未来的展望，以及智能合约平台过去29个月的发展。</p>
+<h1 id="BTC-vs-ETH"><a href="#BTC-vs-ETH" class="headerlink" title="BTC vs. ETH"></a>BTC vs. ETH</h1><p>过去29个月，也就是《寻找圣杯》发表到今天的这段时间，比特币的发展速度超过智能合约平台的发展速度。这里说的“发展”，既包括实际效用提升导致的生产力发展，同时也指仅仅由于人们观念变化而带来的吸引力的提升。智能合约平台的发力点显然是在前者，而比特币则属于后者，也就是说，以以太坊为代表的智能合约平台的技术进步的速度低于比特币仅仅因为存续时间延长而带来的对人们观念改变的速度。这正是本文上半部分的基本观点。</p>
+<p>两者的发展其实反映在ETH/BTC的价格对比上，如下图所示。在原文发表时，ETH/BTC的价格大约是0.058，而此后一直到今天价格都远低于这个数值，今天的价格比值只有0.023，一半都不到。而在原文发表前的为期1年左右的时间里，ETH和BTC的竞争呈胶着状态，彼时ETH的发展一片向好，之前社区已经成功地从TheDAO事件导致的硬分叉泥潭中走出来，并且由于智能合约生产力上的先进性，具体来讲是因为ERC20的代币标准带来的 ICO狂潮，引发了整个加密资产行业大牛市；反观彼时的BTC，社区一直处在潜在的硬分叉可能引发的共识坍塌的气氛中，尤其是时间来到2018年1月份，ETH/BTC比价最高来到0.12，ETH总市值逼近BTC，而BTC的总市值占加密资产行业的占比降至37.8%，而ETH占比升至31.1%。当时，社区里有一个热词经常被提及— Flippening（大反转），即ETH取代BTC成为加密行业老大。但是，至今从未发生。那么，在过去29个月发生了什么？</p>
+<p><img src="/images/ethbtc-20180730.png"></p>
+<h1 id="发生了什么？"><a href="#发生了什么？" class="headerlink" title="发生了什么？"></a>发生了什么？</h1><p>外部世界发生了：</p>
+<p>A）新冠病毒的大流行，迫使全球主要央行大量极速印钞。下图显示，美联储的资产负债表在短短2.5个月里从4.3万亿增长到7.2万亿，增长近3万亿美元，要知道应对2008年金融危机的量化宽松才只印7000亿美元。</p>
+<p><img src="/images/%E7%BE%8E%E8%81%94%E5%82%A8%E8%B5%84%E4%BA%A7%E8%B4%9F%E5%80%BA%E8%A1%A8.png"></p>
+<p>B）财富分配加速两极化。货币大放水迅速推升资产价格，极大提升了前1%高净值人群的资产量；而相比之下，后50%的人非但没有持有资产，相反还因为失业减少了收入。这样的贫富分化加剧社会不满，使得人们更容易接纳加密资产，毕竟在旧秩序变差的情况下，加密资产提供了新型的保障。</p>
+<p>BTC内部发生了：</p>
+<p>额。。。似乎没发生太多，没有预料之外的大事，最重要的就是按所有人的预期在2020年5月实施产量减半。比特币并没有在生产力提升的道路上积极进取，表现在没有采纳BCH等分叉社区主张的大区块方案，而是选择继续不变。</p>
+<p>比特币的不变，带来了稳定的预期，是最大的卖点，尤其是在旧有秩序正在坍塌的当下。比特币在2020年5月成功减半后，通胀率大约为1.8%，而2024年减半后会进一步下降到0.8%，低于央行们普遍认可的2%的通胀标准；另一面，全球央行的领导者美联储，却可以在短短3个月内增发3万亿美元，M0货币供应量极速上涨70%以上，而其他国家的央行也都采取了类似的极端扩张性货币政策，再加上世界各国政府采取的极端扩张性财政政策，这些都与比特币的稳定预期形成了鲜明对比。</p>
+<p>2020年，人们的观念发生了质的变化，一部分反映在机构开始大量买入比特币，从上市公司，到保险公司，再到各类基金都纷纷披露购买比特币，这其实反映了顶端的1%的人的观念变化，我们也不再看到有名人出来对比特币一通狂贬。另一方面，非高净值人群的观念变化可以从持币人口比例中窥见一二，根据2020年6月30日由英国 Financial Conduct Authority（FCA）发布的”Cryptoasset Consumer Research 2020”报告显示，截止2019年年底，FCA估算英国持有过加密资产的人数量占全国成年人口比例为5.35%，而上一年这一数值为3%，如果增长速度不变，则这一数值到2020年底应接近于10%。这是英国的情况，而美国的情况是，截止2020年底，已经有多家面向大众用户的金融类应用开放了加密资产投资业务，包括 Paypal, Robinhood, Square 等，这对于普通民众持有比特币打开了方便之门。考虑到两国的相似性，笔者认为美国的持币人口比例应与英国接近，即美国目前持币人口应在3000万人左右，具体的，我们可以到时候从即将上市的Coinbase的招股说明书中寻找确认。英美两国在加密资产”采纳曲线”（Adoption Curve）上，处于早期使用者阶段的晚期，正在迅速迈入早期大多数的阶段。关于采纳曲线，具体可参见 《寻找圣杯》原文，<a target="_blank" rel="noopener" href="https://bihu.com/article/1019497%E3%80%82">https://bihu.com/article/1019497。</a></p>
+<p>总而言之，比特币正在走向主流人群，也正在被主流观念所接受。外部环境的恶化，加剧了这一进程。</p>
+<p>ETH内部发生了：</p>
+<p>A）ICO热潮的褪去，该商业模式基本上被证明不靠谱，除少数例外；<br>B）ETH2.0进展缓慢，路线图一改再改；<br>C）被指望解决核心吞吐量问题的多项二层技术被证明缺乏“产品市场契合度”（Product Market Fit）；<br>D）货币政策从每个区块奖励 3 ETH 降低到 2 ETH，但目前仍然保持4.5%的通胀率，且无明确的总量上限的预期；<br>E）“以太坊杀手”一个接一个倒下去；<br>F）DeFi大发展，产品市场契合度被证明。</p>
+<p>在业务发展上，ETH是有明显的进步。虽然ICO被证明不是广泛可取的商业模式，但后来的DeFi找到了产品市场契合度。在价值存储的业务上，ETH有略微的努力（区块链奖励从3ETH降到2ETH），ETH社区内部也有很多关于这方面进取的声音，但这方面的措施显然不足，从结果看也并无明显效果。关于价值存储，笔者一直认为，智能合约平台在本身的货币政策上理论上是有可能做到与BTC类似的总量上限政策的，并与BTC在未来展开竞争，但是当前显然不是各个智能合约平台的重点方向，这一点笔者完全认同。</p>
+<h1 id="观念-vs-生产力"><a href="#观念-vs-生产力" class="headerlink" title="观念 vs. 生产力"></a>观念 vs. 生产力</h1><p>对于核心瓶颈问题— 吞吐量提升，ETH显然没有取得任何实质性的进步。目前ETH每天处理的交易笔数大约为120万笔，假设一个用户平均3天发一笔交易，那么以太坊只能服务360万用户。ETH区块满载的情况已经持续很久，长期高矿工费的状态大大抑制了平台之上应用的发展。对于走生产力路线的智能合约平台来说，是极大的失败。在过去的29个月中，ETH2.0的进展远远低于社区预期；而二层扩容方案，例如 Plasma、侧链、雷电网络等均未被市场接受，无法解决吞吐量瓶颈问题。在这种情况下，以太坊作为生产力平台，只能作为资产结算层而存在，而无力充当全球范围内的大众型基础设施。如果今后一旦有别的平台完成突破，则以太坊作为资产结算层的地位也将会动摇。</p>
+<p>笔者在此不是要说ETH社区不努力，事实上，智能合约平台在不大量牺牲去中心化特性的情况下大幅提升吞吐量，其难度是由事情本质决定的，目前看来的确难度相当大，但也不是不可能，笔者看到的一些迹象表明，2021年有希望实现实质性的突破，具体在本文的下半部分展开讨论。</p>
+<p>往回看，我们大概可以得到“如此显而易见以至于是常识性的”结论：智能合约平台在提升生产力方面的难度，远大于BTC的躺着、等待、保持不动，并期待外界环境恶化再带来一点点小运气。</p>
+<p>是的，回看历史，世界总是显得那么简单。</p>
+<p>“比特币无用论”，曾经一直是困扰人们认同BTC价值的最大障碍，人们总是问：“比特币为什么值钱？”而当前，比特币作为“数字黄金”的观念，越来越深入人心。黄金作为一种资产，其实也是“无用”的，有人测算，黄金基于工业效用、装饰等的实用价值的价格大约为每盎司50美元，而今天黄金的价格是1867美元/盎司，那么这剩余的1817美元/盎司的价格则来源于人们基于观念的共识。</p>
+<p>BTC就是基于观念共识的资产；而智能合约系统则是生产力平台，天生需要证明自己。</p>
+<p>从本文的下半部分开始，笔者将以“生产力平台”的称呼取代“智能合约平台”，因为像波卡这种基于新型架构的区块链系统并不主打智能合约。</p>
+<h1 id="小节"><a href="#小节" class="headerlink" title="小节"></a>小节</h1><p>本文上半部分集中回顾了比特币和智能合约平台以太坊的最近29个月的历史，论述了BTC作为基于共识和观念的资产，由于自身的确定性以及外部世界激增的极大不确定性，使得比特币作为数字黄金能够很好地满足人们的需求，人们以用脚投票的方式证明：BTC的产品市场契合度爆表。笔者在此进一步做出推断，比特币大概率会成为市值达到1万亿美元的首座圣杯。而以以太坊作为生产力平台代表，以及其他的生产力平台，都仍然需要证明自身的实力。</p>
+<p>本文下半部将着于眼未来，试图斗胆再做一些预测和分析，包括生产力平台的突破点、稳定币、身份系统等，敬请关注。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%92%95%E5%99%9C/" rel="tag"># 咕噜</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/25/%E6%89%BE%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%96%B9%E6%B3%95/" rel="prev" title="找对象的正确方法">
+      <i class="fa fa-chevron-left"></i> 找对象的正确方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/25/20210225-%E6%9C%AC%E8%BD%AE%E7%89%9B%E5%B8%82%E7%BB%93%E6%9D%9F%E4%BA%86%E5%90%97%EF%BC%9F/" rel="next" title="本轮牛市结束了吗？">
+      本轮牛市结束了吗？ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E5%9B%9E%E9%A1%BE"><span class="nav-number">1.</span> <span class="nav-text">预测回顾</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BTC-vs-ETH"><span class="nav-number">2.</span> <span class="nav-text">BTC vs. ETH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">发生了什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%82%E5%BF%B5-vs-%E7%94%9F%E4%BA%A7%E5%8A%9B"><span class="nav-number">4.</span> <span class="nav-text">观念 vs. 生产力</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E8%8A%82"><span class="nav-number">5.</span> <span class="nav-text">小节</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Haoxueren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haoxueren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

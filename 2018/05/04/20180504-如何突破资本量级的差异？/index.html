@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"haoxueren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="内容导读在数字货币市场，资本量级的巨大差异，映射到投资收益上，往往是天壤之别。 本文将抽象问题具体化，把资本量级差异这个抽象问题，转换为增加资金量和提高收益率两个具体问题。 然后各个击破，分别给出了场外循环融资法和选币方法论两个解决方案。 资本量级的差异有个段子，用来形容资本量级的差异很贴切：  王思聪他爹给了他5个亿，他赚了40亿，翻了8倍。 我爹给了我2块钱，我买了幅手套去了工地，搬砖赚了18">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何突破资本量级的差异？">
+<meta property="og:url" content="http://haoxueren.github.com/2018/05/04/20180504-%E5%A6%82%E4%BD%95%E7%AA%81%E7%A0%B4%E8%B5%84%E6%9C%AC%E9%87%8F%E7%BA%A7%E7%9A%84%E5%B7%AE%E5%BC%82%EF%BC%9F/index.html">
+<meta property="og:site_name" content="好学人的博客">
+<meta property="og:description" content="内容导读在数字货币市场，资本量级的巨大差异，映射到投资收益上，往往是天壤之别。 本文将抽象问题具体化，把资本量级差异这个抽象问题，转换为增加资金量和提高收益率两个具体问题。 然后各个击破，分别给出了场外循环融资法和选币方法论两个解决方案。 资本量级的差异有个段子，用来形容资本量级的差异很贴切：  王思聪他爹给了他5个亿，他赚了40亿，翻了8倍。 我爹给了我2块钱，我买了幅手套去了工地，搬砖赚了18">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-03T23:50:00.000Z">
+<meta property="article:modified_time" content="2018-05-03T23:50:00.000Z">
+<meta property="article:author" content="Haoxueren">
+<meta property="article:tag" content="投资交易">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://haoxueren.github.com/2018/05/04/20180504-%E5%A6%82%E4%BD%95%E7%AA%81%E7%A0%B4%E8%B5%84%E6%9C%AC%E9%87%8F%E7%BA%A7%E7%9A%84%E5%B7%AE%E5%BC%82%EF%BC%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>如何突破资本量级的差异？ | 好学人的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">好学人的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2018/05/04/20180504-%E5%A6%82%E4%BD%95%E7%AA%81%E7%A0%B4%E8%B5%84%E6%9C%AC%E9%87%8F%E7%BA%A7%E7%9A%84%E5%B7%AE%E5%BC%82%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何突破资本量级的差异？
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-04 07:50:00" itemprop="dateCreated datePublished" datetime="2018-05-04T07:50:00+08:00">2018-05-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="内容导读"><a href="#内容导读" class="headerlink" title="内容导读"></a>内容导读</h1><p>在数字货币市场，资本量级的巨大差异，映射到投资收益上，往往是天壤之别。</p>
+<p>本文将抽象问题具体化，把资本量级差异这个抽象问题，转换为<strong>增加资金量</strong>和<strong>提高收益率</strong>两个具体问题。</p>
+<p>然后各个击破，分别给出了<strong>场外循环融资法</strong>和<strong>选币方法论</strong>两个解决方案。</p>
+<h1 id="资本量级的差异"><a href="#资本量级的差异" class="headerlink" title="资本量级的差异"></a>资本量级的差异</h1><p>有个段子，用来形容资本量级的差异很贴切：</p>
+<blockquote>
+<p>王思聪他爹给了他5个亿，他赚了40亿，翻了8倍。</p>
+<p>我爹给了我2块钱，我买了幅手套去了工地，搬砖赚了180块，翻了90倍。</p>
+<p>事实证明：其实我能力还是有的，只是启动资金少了点。</p>
+</blockquote>
+<p>上面的段子虽然不是很贴切，却是能说明问题的。</p>
+<p>下面再给大家看一个大智先生自身的案例：</p>
+<blockquote>
+<p>从2018年3月20日到2018年4月30日，大智先生的账户资产从22万增值到了75万，资产增值了3.4倍。</p>
+<p>再看王团长，根据《王团长区块链日记》中的数据，在此期间，王团的账户资产从205万，增值到了488万，资产增值2.4倍。</p>
+</blockquote>
+<p>我们做的是同样的事情(选币+持币不动)，从资产增值速度这方面来看，我做得还要好一些。</p>
+<p>但结果是，这期间王团长我多赚了230万，我们的贫富差距更大了！</p>
+<p>230万，意味着大智先生每天工作八小时，连续10年的工资收入！</p>
+<p>意味着王团长可以香车美女的时候，我还要计算着自己的房贷何时才能还完！</p>
+<p>你看，我做得并不差，结果却令人嘘唏！</p>
+<p>这是个值得思考的问题！</p>
+<h1 id="如何解决资本量级的差异？"><a href="#如何解决资本量级的差异？" class="headerlink" title="如何解决资本量级的差异？"></a>如何解决资本量级的差异？</h1><p>猫与老虎，本是同根同源，由于一个偶然的机会分道扬镳，各自进化成了体型迥异的两个物种，因此，两者的战斗力也拉开了巨大的差距。</p>
+<p>小猫咪要如何才能战胜大老虎呢？</p>
+<p>大智先生认为，有两条路可走：</p>
+<blockquote>
+<p>1、大吃狂吃，长成像老虎一样的大体型；</p>
+<p>2、习文弄武，把自己变成文武双全猫咪。</p>
+</blockquote>
+<p>受自然规律的限制，猫咪的梦想基本无法实现，但同样的思路，却可以用来解决资本量级差异的问题。</p>
+<p>投资与收益的关系，可以用一个公式来概括：</p>
+<blockquote>
+<p>投资收益 = 资金量 * 收益率</p>
+</blockquote>
+<p>由公式可以看出，决定我们收益的，有两个关键因素：资金量和收益率。</p>
+<p>因此，我们的解决方案就呼之欲出了：</p>
+<blockquote>
+<p>1、增加我们的资金量。</p>
+<p>2、提升我们的收益率。</p>
+</blockquote>
+<p>下面就详细介绍下这两种解决方案，并给出的具体可行的步骤。</p>
+<h1 id="增加资金量"><a href="#增加资金量" class="headerlink" title="增加资金量"></a>增加资金量</h1><p>这是最直接的解决方案，简单粗暴，但快速见效。</p>
+<p>增加资金量的方法有很多种，比如借贷、融资、杠杆等。</p>
+<p>但是，大智先生不建议大家借钱投资或使用场内杠杆。</p>
+<p>因为借钱受时间限制，一旦资金到期，无论盈亏，必须清仓还钱。</p>
+<p>使用场内杠杆受空间限制，极端的行情可能刺穿你的止损线，把你清除出局。</p>
+<p>但幸运的是，我们生活在互联网金融发达的社会，普通人也可以利用金融工具，为自己融到不受时间和空间限制的资金。</p>
+<p>具体方法如下：</p>
+<p>很多互联网金融产品，都会为我们提供一定的借贷额度。</p>
+<p>假如你的蚂蚁借呗有10万额度，百度钱包有10万额度。</p>
+<p>那么你可以直接把蚂蚁借呗的10万借出来用于投资，然后用百度钱包的额度偿还蚂蚁借呗的还款，二者的额度相互循环，你就可以长期使用这笔资金。</p>
+<p>没错，无需担心还款问题，你只需要支付每期的利息就可以。</p>
+<p>现在很多贷款额度都是循环额度，这意味着你可以借出更多的资金。</p>
+<p><em>不过要注意借款利率哦！</em></p>
+<h1 id="提高收益率"><a href="#提高收益率" class="headerlink" title="提高收益率"></a>提高收益率</h1><p>增加投资本金，固然简单有效，但其增长是线性的。</p>
+<p>提高投资收益率，虽然前期资产增值不明显，但你的资产增值速度是指数级的。</p>
+<p>如果你把这个维度的能力提升上来了，你很快就会明白什么叫降维打击。</p>
+<p>假设对方的资金量是你的10倍，你的收益率是对方的2倍，如果每个周期对方的投资收益率为100%，那你的投资收益率就是200%。</p>
+<p>在这个前提下，只需要经过6个周期，你的总资产就会超过对方，然后一骑绝尘，让对方从此难以望你项背。</p>
+<p>计算过程如下：</p>
+<blockquote>
+<p>你的资金增长曲线：y1 = 10*(1+200%)^x</p>
+<p>对方的资金增长曲线：y2 = 1*(1+100%)^x</p>
+</blockquote>
+<p>提高收益率自然是极好的，但我们应该怎么做呢？</p>
+<p>下面大智先生就把自己的选币方法论分享给大家，供大家参考：</p>
+<p>大智先生认为，选币，其实和选对象是一样的。</p>
+<p>应该遵循两个重要的原则：</p>
+<blockquote>
+<p>要么有钱，有么有才华，最好二者兼备。</p>
+</blockquote>
+<p>如果二者兼得，那绝对是不可多得的宝贝，一定要想尽一切办法抱回家，抱着不放。</p>
+<p>具体到选币上，也是同样的道理，要么资金实力雄厚，要么技术上有重大创新。</p>
+<p>举个例子：</p>
+<p>当年的BTC，是个才华横溢的小伙子，多少年不受人待见。你看现在，已经是位高权重，子孙满堂了。</p>
+<p>比如NANO，最初是一个程序员利用业余时间开发的，凭借着创新的DGA技术，实现了支付秒级到账，也因此，NANO曾经一月暴涨300倍！</p>
+<p>光是这点，足以秒杀BCH、LTC等一众支付币。</p>
+<p>再比如EOS，已融资约520万个ETH，以当前ETH价格计算，价值37亿美元，这是超级巨富好吗？</p>
+<p>再加上EOS有BM护航，有着不错的技术背景，简单就是豪门大才子啊！</p>
+<p>现在，你知道为什么那么多人看好EOS了吧？</p>
+<p><em>钱不是万能的，但有钱，确实是无可比拟的优势。</em></p>
+<p><strong>2022.03.24更新：</strong></p>
+<p>有关系也很重要哦，对应到选币方面，就是要看这个币的生态。</p>
+<p>比如络绎不绝的ETH杀手，即不缺资金，也不缺技术，但最后都死在了没生态上。</p>
+<p>编程语言上也是如此，这么多年，多少Java的挑战者，有谁成功了吗？没有！</p>
+<p>Java仍然稳坐钓鱼台！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%95%E8%B5%84%E4%BA%A4%E6%98%93/" rel="tag"># 投资交易</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/04/26/%E9%BB%91%E5%A4%A9%E9%B9%85%EF%BC%9ASmartMesh%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E/" rel="prev" title="黑天鹅：SmartMesh智能合约溢出漏洞">
+      <i class="fa fa-chevron-left"></i> 黑天鹅：SmartMesh智能合约溢出漏洞
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/05/10/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E9%9F%B3%E9%A2%91/" rel="next" title="手把手教你在文章中插入音频">
+      手把手教你在文章中插入音频 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E5%AF%BC%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">内容导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%84%E6%9C%AC%E9%87%8F%E7%BA%A7%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-number">2.</span> <span class="nav-text">资本量级的差异</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B5%84%E6%9C%AC%E9%87%8F%E7%BA%A7%E7%9A%84%E5%B7%AE%E5%BC%82%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">如何解决资本量级的差异？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E8%B5%84%E9%87%91%E9%87%8F"><span class="nav-number">4.</span> <span class="nav-text">增加资金量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E9%AB%98%E6%94%B6%E7%9B%8A%E7%8E%87"><span class="nav-number">5.</span> <span class="nav-text">提高收益率</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Haoxueren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haoxueren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

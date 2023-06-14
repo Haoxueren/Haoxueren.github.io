@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"haoxueren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="交易策略1）在等额止盈止损的情况下，如果用抛硬币代替交易决策，那么交易的胜率约为50%。但我知道交易绝不是抛硬币，交易更像打牌。只要我有足够的耐心，等自己拿到一幅好牌后再下注，就可以轻松让自己交易的胜率超过50%，这甚至不需要我有多高的技术水平。 2）简单来说，就是模式化交易，只做自己最确定的机会(不懂不做)。而至于平时那些不够好的交易机会，一律选择放弃，因为放弃并不会给我带来任何损失。 3）由此">
+<meta property="og:type" content="article">
+<meta property="og:title" content="等额止盈止损交易系统">
+<meta property="og:url" content="http://haoxueren.github.com/2021/12/27/20211227-%E7%AD%89%E9%A2%9D%E6%AD%A2%E7%9B%88%E6%AD%A2%E6%8D%9F%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="好学人的博客">
+<meta property="og:description" content="交易策略1）在等额止盈止损的情况下，如果用抛硬币代替交易决策，那么交易的胜率约为50%。但我知道交易绝不是抛硬币，交易更像打牌。只要我有足够的耐心，等自己拿到一幅好牌后再下注，就可以轻松让自己交易的胜率超过50%，这甚至不需要我有多高的技术水平。 2）简单来说，就是模式化交易，只做自己最确定的机会(不懂不做)。而至于平时那些不够好的交易机会，一律选择放弃，因为放弃并不会给我带来任何损失。 3）由此">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-27T03:01:12.000Z">
+<meta property="article:modified_time" content="2022-08-14T06:48:37.000Z">
+<meta property="article:author" content="Haoxueren">
+<meta property="article:tag" content="交易系统">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://haoxueren.github.com/2021/12/27/20211227-%E7%AD%89%E9%A2%9D%E6%AD%A2%E7%9B%88%E6%AD%A2%E6%8D%9F%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>等额止盈止损交易系统 | 好学人的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">好学人的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2021/12/27/20211227-%E7%AD%89%E9%A2%9D%E6%AD%A2%E7%9B%88%E6%AD%A2%E6%8D%9F%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          等额止盈止损交易系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-27 11:01:12" itemprop="dateCreated datePublished" datetime="2021-12-27T11:01:12+08:00">2021-12-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-14 14:48:37" itemprop="dateModified" datetime="2022-08-14T14:48:37+08:00">2022-08-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="交易策略"><a href="#交易策略" class="headerlink" title="交易策略"></a>交易策略</h1><p>1）在等额止盈止损的情况下，如果用抛硬币代替交易决策，那么交易的胜率约为<code>50%</code>。但我知道交易绝不是抛硬币，交易更像打牌。只要我有<strong>足够的耐心</strong>，等自己拿到一幅好牌后再下注，就可以轻松让自己交易的胜率超过<code>50%</code>，这甚至不需要我有多高的技术水平。</p>
+<p>2）简单来说，就是模式化交易，只做自己最确定的机会(不懂不做)。而至于平时那些不够好的交易机会，一律选择放弃，因为放弃并不会给我带来任何损失。</p>
+<p>3）由此来看，打造一个稳定盈利的交易系统，其实是一件很简单事情。之前之所以一直没有成功，是因为我把这件事想复杂了，太过于重视技术而忽视了交易策略。</p>
+<p>4）我相信我找到了一条致富的捷径！</p>
+<h1 id="交易方向"><a href="#交易方向" class="headerlink" title="交易方向"></a>交易方向</h1><p>1）结构：如果波谷在不断抬高，则为上涨结构；如果波峰在不断降低，则为下跌结构。顺势交易，你只会错一次，就是趋势反转那次！而抄底摸顶，你只会对一次，就是趋势反转那次！可以说顺势交易十拿九稳，逆势交易九死一生！怎样选择，显而易见了！</p>
+<p>2）速度：设最近三个波段依次为<code>N1、N2、N3</code>，如果<code>N3</code>的速度明显大于<code>N</code>1的速度，则为推动型结构；如果<code>N3</code>的速度明显小于<code>N1</code>的速度，则为衰竭型结构。推动型结构往往说明趋势仍将继续，而衰竭型结构往往说明趋势已接近尾声。</p>
+<p>3）从速度和结构两个维度综合判断，可以将走势划分为4种情况：<code>推动上涨结构</code>，<code>衰竭上涨结构</code>，<code>推动下跌结构</code>，<code>衰竭下跌结构</code>。若市场处于<code>推动上涨结构</code>，回调时可入场开多；若市场于<code>推动下跌结构</code>，反弹时可入场开空。其它两种情况，放弃交易。</p>
+<p>4）做多时要选择暴涨后强势调整(<code>N2</code>为强调整)的品种，做空时要选择暴跌后弱势反弹(<code>N2</code>为弱反弹)的品种，可以极大地提高交易的胜率(小技巧：可以从涨幅榜中选择最强势的品种做多，从跌幅榜中筛选最弱势的品种做空)。</p>
+<h1 id="交易模式"><a href="#交易模式" class="headerlink" title="交易模式"></a>交易模式</h1><p>为了最大限度地提高交易胜率，我决定只做做暴涨暴跌后的第三段行情，即：</p>
+<p>1）若暴跌后反弹很弱势，可以择机入场做空，止损设置在暴跌前高点！</p>
+<p>2）若暴涨后调整很强势，可以择机入场做多，止损设置在暴涨前低点！</p>
+<p>根据我之前的交易经验，坚持这个交易原则，在<code>1:1</code>的盈亏比下，胜率可达到<code>75%</code>以上。</p>
+<h1 id="交易步骤"><a href="#交易步骤" class="headerlink" title="交易步骤"></a>交易步骤</h1><p>1）通过结构和速度判断趋势</p>
+<p>2）通过时间周期寻找买卖点</p>
+<p>3）将止损设置在前期高低点</p>
+<p>4）盈利20%后启动追踪止盈</p>
+<p>5）止损后48小时内禁止交易</p>
+<p>根据以上策略，只要我对行情判断的正确率大于50%，即可轻松实现稳定盈利。</p>
+<p>我相信这是轻而易举的事情！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F/" rel="tag"># 交易系统</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/27/%E5%87%A1%E4%BA%8B%E4%B8%89%E6%80%9D%E8%80%8C%E5%90%8E%E8%A1%8C/" rel="prev" title="凡事三思而后行">
+      <i class="fa fa-chevron-left"></i> 凡事三思而后行
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/29/%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%B8%80%E4%B8%AA%E4%BA%BA%EF%BC%9F/" rel="next" title="如何改变一个人？">
+      如何改变一个人？ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A4%E6%98%93%E7%AD%96%E7%95%A5"><span class="nav-number">1.</span> <span class="nav-text">交易策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A4%E6%98%93%E6%96%B9%E5%90%91"><span class="nav-number">2.</span> <span class="nav-text">交易方向</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A4%E6%98%93%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">交易模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A4%E6%98%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">交易步骤</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Haoxueren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haoxueren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

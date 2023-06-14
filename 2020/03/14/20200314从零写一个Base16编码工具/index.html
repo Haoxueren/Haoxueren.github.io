@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"haoxueren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="业务背景我的很多资料，都是明文保存在三方的云数据库的，不是没想过加密，问题是加密之后，就无法搜索了，面对大量信息，无法模糊检索可谓硬伤。 难道真的就没有办法了吗？我坚信一定是有的，只是我还没有发现或想出来而已。 这不，最近受Base64编码原理的启发，豁然开朗，Base64因为是3个字节合并为一组(24位)，再平分成4组，每组6位，因此无法保证字节的双向映射，也因此无法搜索。 那我实现一个Base">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零写一个Base16编码工具">
+<meta property="og:url" content="http://haoxueren.github.com/2020/03/14/20200314%E4%BB%8E%E9%9B%B6%E5%86%99%E4%B8%80%E4%B8%AABase16%E7%BC%96%E7%A0%81%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="好学人的博客">
+<meta property="og:description" content="业务背景我的很多资料，都是明文保存在三方的云数据库的，不是没想过加密，问题是加密之后，就无法搜索了，面对大量信息，无法模糊检索可谓硬伤。 难道真的就没有办法了吗？我坚信一定是有的，只是我还没有发现或想出来而已。 这不，最近受Base64编码原理的启发，豁然开朗，Base64因为是3个字节合并为一组(24位)，再平分成4组，每组6位，因此无法保证字节的双向映射，也因此无法搜索。 那我实现一个Base">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-14T15:47:49.000Z">
+<meta property="article:modified_time" content="2020-03-14T15:47:49.000Z">
+<meta property="article:author" content="Haoxueren">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://haoxueren.github.com/2020/03/14/20200314%E4%BB%8E%E9%9B%B6%E5%86%99%E4%B8%80%E4%B8%AABase16%E7%BC%96%E7%A0%81%E5%B7%A5%E5%85%B7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>从零写一个Base16编码工具 | 好学人的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">好学人的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2020/03/14/20200314%E4%BB%8E%E9%9B%B6%E5%86%99%E4%B8%80%E4%B8%AABase16%E7%BC%96%E7%A0%81%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从零写一个Base16编码工具
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-14 23:47:49" itemprop="dateCreated datePublished" datetime="2020-03-14T23:47:49+08:00">2020-03-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="业务背景"><a href="#业务背景" class="headerlink" title="业务背景"></a>业务背景</h1><p>我的很多资料，都是明文保存在三方的云数据库的，不是没想过加密，问题是加密之后，就无法搜索了，面对大量信息，无法模糊检索可谓硬伤。</p>
+<p>难道真的就没有办法了吗？我坚信一定是有的，只是我还没有发现或想出来而已。</p>
+<p>这不，最近受Base64编码原理的启发，豁然开朗，Base64因为是3个字节合并为一组(24位)，再平分成4组，每组6位，因此无法保证字节的双向映射，也因此无法搜索。</p>
+<p>那我实现一个Base16编码，将每个字节一分为二，前4位一组，后4位一组，不就可以保证字节的双向映射，从而实现可搜索编码了嘛？</p>
+<p>说干就干，也就2个方法，满打满算30多行代码，出奇的简单！</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class Base16 &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 对文本进行 base16 编码</span><br><span class="line">     */</span><br><span class="line">    public static String encode(String text) &#123;</span><br><span class="line">        byte[] bytes = text.getBytes(StandardCharsets.UTF_8); // 转换为字节数组</span><br><span class="line">        StringBuilder builder = new StringBuilder();</span><br><span class="line">        for (byte b : bytes) &#123;</span><br><span class="line">            byte b1 = (byte) (b &gt;&gt; 4 &amp; 0b00001111); // 取高4位</span><br><span class="line">            byte b2 = (byte) (b &amp; 0b00001111); // 取低4位</span><br><span class="line">            String s1 = Integer.toHexString(b1);</span><br><span class="line">            String s2 = Integer.toHexString(b2);</span><br><span class="line">            builder.append(s1).append(s2);</span><br><span class="line">        &#125;</span><br><span class="line">        return builder.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 将 base16 解码为明文</span><br><span class="line">     */</span><br><span class="line">    public static String decode(String base16) &#123;</span><br><span class="line">        char[] chars = base16.toCharArray();</span><br><span class="line">        byte[] bytes = new byte[chars.length / 2];</span><br><span class="line">        for (int i = 0; i &lt; chars.length; i += 2) &#123;</span><br><span class="line">            String s1 = String.valueOf(chars[i]);</span><br><span class="line">            String s2 = String.valueOf(chars[i + 1]);</span><br><span class="line">            byte b1 = Byte.parseByte(s1, 16);</span><br><span class="line">            byte b2 = Byte.parseByte(s2, 16);</span><br><span class="line">            b1 = (byte) (b1 &lt;&lt; 4);</span><br><span class="line">            byte b = (byte) (b1 + b2);</span><br><span class="line">            bytes[i / 2] = b;</span><br><span class="line">        &#125;</span><br><span class="line">        return new String(bytes, StandardCharsets.UTF_8);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/07/20200307-%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B8%85%E4%BB%93EOS%EF%BC%9F/" rel="prev" title="我为什么清仓EOS？">
+      <i class="fa fa-chevron-left"></i> 我为什么清仓EOS？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/16/20200316-%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E5%87%8F%E5%8D%8A%E7%89%9B%E5%B8%82%EF%BC%8C%E4%BB%8E2020%E5%B9%B43%E6%9C%88%E5%BC%80%E5%A7%8B/" rel="next" title="比特币的减半牛市，从2020年3月开始">
+      比特币的减半牛市，从2020年3月开始 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">业务背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Haoxueren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haoxueren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
