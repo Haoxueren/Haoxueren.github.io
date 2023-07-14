@@ -151,6 +151,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2018/05/19/20180519-%E4%BD%BF%E7%94%A8Windows%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%B5%8F%E8%A7%88%E5%B8%81%E5%9C%88%E8%B5%84%E8%AE%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/19/20180519-%E4%BD%BF%E7%94%A8Windows%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%B5%8F%E8%A7%88%E5%B8%81%E5%9C%88%E8%B5%84%E8%AE%AF/" class="post-title-link" itemprop="url">使用定时任务浏览币圈资讯</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-19 07:54:00" itemprop="dateCreated datePublished" datetime="2018-05-19T07:54:00+08:00">2018-05-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>币圈一日，股市一年。</p>
+<p>大量的新技术、新项目，如雨后春笋，争先恐后地破土而出。</p>
+<p>日新月异不再是夸张的修辞手法，已成为币圈的真实写照。</p>
+<p>身处区块链风口浪尖的我们，每天及时了解最新的技术、政策、项目进度等信息，是非常有必要的。</p>
+<p>但获取信息的过程中，每次都要打开浏览器，输入网址，才能接触到想要的信息。</p>
+<p>而且，我们每天还要惦记着这个事，因为一不小心就忘了。这是对时间和注意力的极大浪费！</p>
+<p>为了解决以上问题，本文将手把手教大家使用Windows计划任务功能，实现每天定时打开币圈资讯的功能，从此摆脱繁琐的手动操作。</p>
+<h1 id="币圈资讯"><a href="#币圈资讯" class="headerlink" title="币圈资讯"></a>币圈资讯</h1><p>获取币圈资讯，有很多渠道。比如：</p>
+<p>币世界：<a target="_blank" rel="noopener" href="http://www.bishijie.com/kuaixun">http://www.bishijie.com/kuaixun</a></p>
+<p>币头条：<a target="_blank" rel="noopener" href="http://www.tokenpapa.com/">http://www.tokenpapa.com</a></p>
+<p>要发车：<a target="_blank" rel="noopener" href="https://www.yaofache.com/news">https://www.yaofache.com/news</a></p>
+<p>这几个网站，内容大同小异，根据个人喜好选择即可。</p>
+<p>交易所公告信息推荐非小号，非小号把所有交易所的公告都聚合到了一个网页，网址如下：</p>
+<p><a target="_blank" rel="noopener" href="https://www.feixiaohao.com/notice">https://www.feixiaohao.com/notice</a></p>
+<h1 id="制作脚本-Windows"><a href="#制作脚本-Windows" class="headerlink" title="制作脚本(Windows)"></a>制作脚本(Windows)</h1><p>有了信息来源，我们还需要制作一个启动脚本。</p>
+<p>操作步骤如下：</p>
+<p>(1) 打开记事本，输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start http://www.bishijie.com/kuaixun</span><br></pre></td></tr></table></figure>
+<p>(2) 将记事本内容另存为.bat文件</p>
+<p>到此为止，脚本就制作完成了。</p>
+<p>双击脚本文件即可自动打开币世界网站。</p>
+<h1 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h1><p>脚本制作完成后，我们还要创建一个计划任务，每天定时执行脚本。</p>
+<p>新建定时任务有两个方法：</p>
+<blockquote>
+<p>1、使用系统内置的schtasks命令</p>
+<p>2、使用系统自带的计划任务程序</p>
+</blockquote>
+<p>以下是使用schtasks命令创建定时任务的方法：</p>
+<p>(1) Windows + R打开运行框，输入cmd，打开命令控制台</p>
+<p>(2) 输入以下创建任务命令，格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn 任务名称 /sc 执行频率 /st 执行时间 /tr 脚本路径</span><br></pre></td></tr></table></figure>
+<p>比如我想每天早上09:00定时打开网站，可以这样写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn bishijie /sc daily /st 09:00 /tr D:\bishijie.bat</span><br></pre></td></tr></table></figure>
+<p>(3) 定时任务创建成功后，可以通过以下命令验证：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /run /tn bishijie</span><br></pre></td></tr></table></figure>
+<p>参考资料：schtasks | Microsoft Docs</p>
+<p>以上就是使用命令行创建定时任务的方法。</p>
+<p>不擅长敲命令的用户，还可以使用Windows自带的任务计划程序，傻瓜式操作。</p>
+<p>点击开始菜单，搜索任务计划程序，然后按程序指引操作即可，这里就不再详述了。</p>
+<h1 id="知识拓展"><a href="#知识拓展" class="headerlink" title="知识拓展"></a>知识拓展</h1><p>定时任务是个非常有用的小功能，除了用于完成一些自动化操作，还可以用于定时提醒，习惯培养等多种应用场景。</p>
+<p>比如大智先生就用定时任务提醒自己下班打卡，每周五提交工作周报等事件提醒。</p>
+<p>还用定时任务实现了每天自动打开每日一句学习英语，几年下来，学了不少单词的句子。</p>
+<p>–END–</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2018/05/19/%E5%B8%81%E4%B9%8E%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89%E4%BC%98%E5%8C%96%E7%83%AD%E9%97%A8%E6%9C%BA%E5%88%B6%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -242,106 +342,6 @@
 <p>只需要在首页默认展示用户关注界面，将热门替换为最新，按时间顺序展示用户发表的文章。</p>
 <p>这样即能第一时间给用户喜欢的内容，又能兼顾新文章的发现。</p>
 <p>【本文完】</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2018/05/19/20180519-%E4%BD%BF%E7%94%A8Windows%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%B5%8F%E8%A7%88%E5%B8%81%E5%9C%88%E8%B5%84%E8%AE%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Haoxueren">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="好学人的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/19/20180519-%E4%BD%BF%E7%94%A8Windows%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%B5%8F%E8%A7%88%E5%B8%81%E5%9C%88%E8%B5%84%E8%AE%AF/" class="post-title-link" itemprop="url">使用定时任务浏览币圈资讯</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-05-19 07:54:00" itemprop="dateCreated datePublished" datetime="2018-05-19T07:54:00+08:00">2018-05-19</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>币圈一日，股市一年。</p>
-<p>大量的新技术、新项目，如雨后春笋，争先恐后地破土而出。</p>
-<p>日新月异不再是夸张的修辞手法，已成为币圈的真实写照。</p>
-<p>身处区块链风口浪尖的我们，每天及时了解最新的技术、政策、项目进度等信息，是非常有必要的。</p>
-<p>但获取信息的过程中，每次都要打开浏览器，输入网址，才能接触到想要的信息。</p>
-<p>而且，我们每天还要惦记着这个事，因为一不小心就忘了。这是对时间和注意力的极大浪费！</p>
-<p>为了解决以上问题，本文将手把手教大家使用Windows计划任务功能，实现每天定时打开币圈资讯的功能，从此摆脱繁琐的手动操作。</p>
-<h1 id="币圈资讯"><a href="#币圈资讯" class="headerlink" title="币圈资讯"></a>币圈资讯</h1><p>获取币圈资讯，有很多渠道。比如：</p>
-<p>币世界：<a target="_blank" rel="noopener" href="http://www.bishijie.com/kuaixun">http://www.bishijie.com/kuaixun</a></p>
-<p>币头条：<a target="_blank" rel="noopener" href="http://www.tokenpapa.com/">http://www.tokenpapa.com</a></p>
-<p>要发车：<a target="_blank" rel="noopener" href="https://www.yaofache.com/news">https://www.yaofache.com/news</a></p>
-<p>这几个网站，内容大同小异，根据个人喜好选择即可。</p>
-<p>交易所公告信息推荐非小号，非小号把所有交易所的公告都聚合到了一个网页，网址如下：</p>
-<p><a target="_blank" rel="noopener" href="https://www.feixiaohao.com/notice">https://www.feixiaohao.com/notice</a></p>
-<h1 id="制作脚本-Windows"><a href="#制作脚本-Windows" class="headerlink" title="制作脚本(Windows)"></a>制作脚本(Windows)</h1><p>有了信息来源，我们还需要制作一个启动脚本。</p>
-<p>操作步骤如下：</p>
-<p>(1) 打开记事本，输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start http://www.bishijie.com/kuaixun</span><br></pre></td></tr></table></figure>
-<p>(2) 将记事本内容另存为.bat文件</p>
-<p>到此为止，脚本就制作完成了。</p>
-<p>双击脚本文件即可自动打开币世界网站。</p>
-<h1 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h1><p>脚本制作完成后，我们还要创建一个计划任务，每天定时执行脚本。</p>
-<p>新建定时任务有两个方法：</p>
-<blockquote>
-<p>1、使用系统内置的schtasks命令</p>
-<p>2、使用系统自带的计划任务程序</p>
-</blockquote>
-<p>以下是使用schtasks命令创建定时任务的方法：</p>
-<p>(1) Windows + R打开运行框，输入cmd，打开命令控制台</p>
-<p>(2) 输入以下创建任务命令，格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn 任务名称 /sc 执行频率 /st 执行时间 /tr 脚本路径</span><br></pre></td></tr></table></figure>
-<p>比如我想每天早上09:00定时打开网站，可以这样写：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn bishijie /sc daily /st 09:00 /tr D:\bishijie.bat</span><br></pre></td></tr></table></figure>
-<p>(3) 定时任务创建成功后，可以通过以下命令验证：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /run /tn bishijie</span><br></pre></td></tr></table></figure>
-<p>参考资料：schtasks | Microsoft Docs</p>
-<p>以上就是使用命令行创建定时任务的方法。</p>
-<p>不擅长敲命令的用户，还可以使用Windows自带的任务计划程序，傻瓜式操作。</p>
-<p>点击开始菜单，搜索任务计划程序，然后按程序指引操作即可，这里就不再详述了。</p>
-<h1 id="知识拓展"><a href="#知识拓展" class="headerlink" title="知识拓展"></a>知识拓展</h1><p>定时任务是个非常有用的小功能，除了用于完成一些自动化操作，还可以用于定时提醒，习惯培养等多种应用场景。</p>
-<p>比如大智先生就用定时任务提醒自己下班打卡，每周五提交工作周报等事件提醒。</p>
-<p>还用定时任务实现了每天自动打开每日一句学习英语，几年下来，学了不少单词的句子。</p>
-<p>–END–</p>
 
       
     </div>
