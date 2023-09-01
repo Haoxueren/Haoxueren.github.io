@@ -151,6 +151,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2023/02/25/20230225-%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/25/20230225-%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">科学上网的两种方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-25 15:29:00" itemprop="dateCreated datePublished" datetime="2023-02-25T15:29:00+08:00">2023-02-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>一、远程主机</strong></p>
+<ol>
+<li><p>通过阿里云或腾讯云买一台墙外的Windows主机，然后登录上主机即可直接翻墙。也可以购买一台Ubuntu主机，然后自行安装桌面软件。</p>
+</li>
+<li><p>这种方法的优点操作简单，不需要任何配置，也不用担心被封。缺点是使用不方便，低配主机往往分辨率较差。</p>
+</li>
+</ol>
+<p><strong>二、SSH隧道</strong></p>
+<ol>
+<li><p>购买一台外网服务器：比如可以在阿里云或腾讯云上购买一台新加坡地区的轻量应用服务器，每月仅需30元左右。</p>
+</li>
+<li><p>配置SSH免密登录：通过<code>ssh keygen</code>命令生成本地密钥，并将公钥<code>id_rsa.pub</code>中的内容复制到服务器下的<code>.ssh/authorized_keys</code>文件内即可。</p>
+</li>
+<li><p>开启SSH隧道：命令<code>ssh -D port username@server_ip</code>，比如<code>ssh -D 2275 lighthouse@129.229.199.197</code>，表示建立一个端口为<code>2275</code>的隧道。</p>
+</li>
+<li><p>本地监听上述端口：Mac电脑操作路径为：<code>System Preferences &gt; Network &gt; Advanced &gt; Proxies</code>，勾选<code>SOCKS Proxies</code>并在右侧<code>SOCKS Proxy Server</code>中填入<code>127.0.0.1</code>和<code>2275</code>。然后点击<code>OK</code>返回，再点击<code>Network</code>的<code>Apply</code>即可。</p>
+</li>
+<li><p>Telegram代理配置：<code>Settings &gt; Data and Storage &gt; Use Proxy &gt; Add Proxy</code>，选择<code>SOCKS5</code>，SERVER输入<code>127.0.0.1</code>，PORT输入<code>2275</code>即可。</p>
+</li>
+<li><p>关闭SSH隧道：强制关闭本地命令行窗口即可。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2023/02/20/20230220-My%20Stop%20Doing%20List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1093,79 +1172,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2023/01/26/20230126-%E6%88%91%E5%BA%94%E8%AF%A5%E5%9C%A8%E5%93%AA%E4%B8%AA%E5%9F%8E%E5%B8%82%E5%AE%9A%E5%B1%85%EF%BC%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Haoxueren">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="好学人的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/26/20230126-%E6%88%91%E5%BA%94%E8%AF%A5%E5%9C%A8%E5%93%AA%E4%B8%AA%E5%9F%8E%E5%B8%82%E5%AE%9A%E5%B1%85%EF%BC%9F/" class="post-title-link" itemprop="url">我应该在哪个城市定居？</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-01-26 21:21:00" itemprop="dateCreated datePublished" datetime="2023-01-26T21:21:00+08:00">2023-01-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li><p>北京虽然教育资源很丰富，但分配很不均匀，主要集中在东西城和海淀，而这里的房价又极高(<code>8W~10W</code>)，其它地区如朝阳丰台、昌平，房价也在<code>5W</code>以上。并且我没有北京户口，即使买得起房也无法落户。如果非要留京，则必须找个有北京户口的女朋友，这极大地限制了我的择偶范围。所以，不如错其锋芒，另谋发展。</p>
-</li>
-<li><p>天津虽然是直辖市，教育资源也很强，目前升学率也很高。但天津经济不行(人才都被北京吸走了)，而经济基础决定上层建筑，高校经费恐怕也会受影响。同时由于天津的房价相对较低，近年来吸引了越来越多的高考移民，可以预见将来的高考竞争也会很激烈。与其无脑跟风，不如另辟蹊径。</p>
-</li>
-<li><p>苏州位于长三角地区，位置优越，气候宜人，自古人杰地灵。最新人均预期寿命数据显示，上海为<code>83.13</code>岁，排名第一；苏州为<code>82.90</code>岁，排名第二；杭州为<code>82.08</code>岁，排名第七。北京为<code>82.03</code>岁，排名第八。</p>
-</li>
-<li><p>苏州经济很强，房价也不算贵，据统计，2021年人均可支配收入前10强城市如下：1.上海(78027)，2.北京(75002)，3.深圳(70847)，4.广州(68907)，5.苏州(68191)，6.杭州(67709)…苏州人均可支配收入紧跟北上广深，且差距不大。而且苏州离上海很近，高铁半小时车程，车票几十块钱。甚至可以采取上海发展，苏州定居的模式。</p>
-</li>
-<li><p>杭州也不错，但浙江的教育资源有些不给力。江苏省有<code>11</code>所211大学，而浙江只有一所985(浙江大学)，没有211。而且高考录取率也反应了这一点：以2022年的数据为例，江苏省211录取率为<code>5.19%</code>，浙江省211录取率为<code>4.40%</code>；江苏省一本上线率为<code>27.98%</code>，浙江省一本上线率为<code>15.96%</code>，差距还是不小的。也有人说江苏的中考分流较大，初升高不到50%，但如果孩子连前40%都达不到，也难指望他有什么大的出息了。</p>
-</li>
-<li><p>广深就不考虑了，离家太远，气候也不好，人均预期寿命是很好的指标，教育资源更是捉襟见肘。</p>
-</li>
-<li><p>北方城市间为虹吸关系，只有北京一家独大；而南方则是合作模式，长三角，珠三角都形成了强大的城市群，协同发展，共同富裕。所以，综合经济、教育、宜居性三方面考虑，我决定放弃北京，今年到苏州定居！</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1235,7 +1241,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-count">136</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
