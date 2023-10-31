@@ -151,6 +151,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2020/03/19/20200319-%E5%A6%82%E4%BD%95%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E4%BF%9D%E5%AD%98Emoji%E8%A1%A8%E6%83%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/19/20200319-%E5%A6%82%E4%BD%95%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E4%BF%9D%E5%AD%98Emoji%E8%A1%A8%E6%83%85/" class="post-title-link" itemprop="url">如何在数据库中保存Emoji表情</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-19 15:20:45" itemprop="dateCreated datePublished" datetime="2020-03-19T15:20:45+08:00">2020-03-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>先说答案：</p>
+<p>1）若数据库不支持保存Emoji表情，可将Emoji表情进行Base64编码后保存。</p>
+<p>2）若希望编码后的内容仍具有可搜索性，可以使用Base16编码。</p>
+<hr>
+<p>最近业务开发中，涉及到一个自定义昵称问题，测试反馈输入Emoji表情后会报错，经与服务端人员沟通，原因是数据库不支持直接存储Emoji表情。</p>
+<p>最初的想法是禁止用户输入Emoji表情，但这种方法无法很好地覆盖到全部的Emoji表情，而且Emoji表情还在不断地增加，总会有漏网之鱼。</p>
+<p>鉴于此，于是进一步的想法是只允许用户输入规则内的字符，比如数字、字符、汉字等，但公司的APP支持多个国家和地区，还要考虑韩文和日文的问题。因此，这种方法也比较繁琐。</p>
+<p>但，我们是知难而退的人嘛？！</p>
+<p>显然不是！</p>
+<p>所以，我灵机一动想到了一个好办法，可以让数据库直接支持保存Emoji表情，很简单，就是在入库前对用户的昵称做一次Base64编码，需要使用时，取出数据后再进行解码即可。</p>
+<p>但这里仍然存在一个不完美的地方，就是对文本进行Base64编码后，便不再具备可搜索性，这是由Base64的编码机制决定的。</p>
+<p>那怎么办呢？方法也很简单，我们可以使用Base16编码，编码后的文本仍然具备可搜索性。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2020/03/16/20200316-%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E5%87%8F%E5%8D%8A%E7%89%9B%E5%B8%82%EF%BC%8C%E4%BB%8E2020%E5%B9%B43%E6%9C%88%E5%BC%80%E5%A7%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -823,75 +892,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2019/02/24/20190224-%E6%88%91%E6%89%93%E7%AE%97%E8%BF%99%E6%A0%B7%E8%B5%9A%E5%88%B01000%E4%B8%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Haoxueren">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="好学人的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/24/20190224-%E6%88%91%E6%89%93%E7%AE%97%E8%BF%99%E6%A0%B7%E8%B5%9A%E5%88%B01000%E4%B8%87/" class="post-title-link" itemprop="url">我打算这样赚到1000万</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-02-24 12:52:00" itemprop="dateCreated datePublished" datetime="2019-02-24T12:52:00+08:00">2019-02-24</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li><p>我打算这样赚到1000万：<strong>买10个比特币，保存好助记词，耐心等5~10年。</strong>只要比特币的价格突破100万人民币，就可以实现赚1000万的目标。</p>
-</li>
-<li><p>像区块链这样革命性的技术，我相信一定会给社会带来巨大的变革，也是我们这一代人的巨大机会。接下来的10年，将会是区块链从小众走向大众的过程，在这样巨大的机会浪潮中，如果赚不到大钱，那注定是非常遗憾的。</p>
-</li>
-<li><p>李笑来说，机会到处都是，比如股票市场的GAFATA，可大部分人就是对此视而不见。在区块链领域呢，比特币就是这样明晃晃的大机会，你准备再一次视而不见吗？</p>
-</li>
-<li><p>你在区块链市场追涨杀跌10年，真不见得能跑赢比特币，甚至不见得能赚到钱。</p>
-</li>
-<li><p>大道至简，大智若愚，如果你不想错过区块链浪潮的大机会，不妨买一些比特币，长期持有。</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -961,14 +961,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">136</span>
+          <span class="site-state-item-count">137</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
