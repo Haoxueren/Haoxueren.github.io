@@ -151,6 +151,260 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2022/06/03/20220603-%E8%B5%84%E9%87%91%E8%B4%B9%E7%8E%87%E5%A5%97%E5%88%A9%E7%A0%94%E7%A9%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/03/20220603-%E8%B5%84%E9%87%91%E8%B4%B9%E7%8E%87%E5%A5%97%E5%88%A9%E7%A0%94%E7%A9%B6/" class="post-title-link" itemprop="url">资金费率套利研究</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-06-03 10:13:21" itemprop="dateCreated datePublished" datetime="2022-06-03T10:13:21+08:00">2022-06-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>币安历史资金费率：<a target="_blank" rel="noopener" href="https://www.binance.com/zh-CN/futures/funding-history/1">https://www.binance.com/zh-CN/futures/funding-history/1</a></p>
+</li>
+<li><p>从币安导出了BTCUSDT(<code>2019.09.10~2022.05.27</code>)的资金费率数据，期间累积收益为<code>51.93%</code>，折合年化收益率为<code>19.13%</code>。</p>
+</li>
+<li><p>从币安导出了ETHUSDT(<code>2019.11.27~2022.05.27</code>)的资金费率数据，期间累积收益为<code>67.17%</code>，折合年化收益率为<code>26.87%</code>。</p>
+</li>
+<li><p>从币安导出了BNBUSDT(<code>2020.02.10~2022.06.03</code>)的资金费率数据，期间累积收益为<code>17.74%</code>，折合年化收益率为<code>7.67%</code>。</p>
+</li>
+<li><p>从BTC和ETH的U本位合约资金费率套利的年化收益在20%左右，即使熊市期间，资金费率套利也是有利可图的。这绝对是个很不错的投资标的了。同时也统计了ETH币本位合约的资金费率，年化收益在7%左右。</p>
+</li>
+<li><p>如果下轮行情我的资产突破<code>1000w</code>，我决定拿出<code>100w</code>专门做资金费率套利(正好有个币安子账户)，每月差不多能用2w的收入，我就可以放心辞职了。</p>
+</li>
+<li><p>下表统计了<code>2019~2022</code>期间每月的资金费率，总体而言，ETH要比BTC的收益高一些，每月资金费率的收益如下：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQLite &gt; SELECT STRFTIME(&#x27;%Y-%m&#x27;, DATE), SUM(RATE) FROM FundingRate WHERE FUTURE=&#x27;ETHUSDT 永续&#x27;  GROUP BY STRFTIME(&#x27;%Y-%m&#x27;, DATE) ORDER BY DATE DESC</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">日期</th>
+<th align="center">BTCUSDT</th>
+<th align="center">ETHUSDT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2022-08</td>
+<td align="center">0.1637%</td>
+<td align="center">0.0418%</td>
+</tr>
+<tr>
+<td align="center">2022-07</td>
+<td align="center">0.5965%</td>
+<td align="center">0.3417%</td>
+</tr>
+<tr>
+<td align="center">2022-06</td>
+<td align="center">0.2921%</td>
+<td align="center">-0.0063%</td>
+</tr>
+<tr>
+<td align="center">2022-05</td>
+<td align="center">0.4657%</td>
+<td align="center">0.2372%</td>
+</tr>
+<tr>
+<td align="center">2022-04</td>
+<td align="center">0.2541%</td>
+<td align="center">0.0493%</td>
+</tr>
+<tr>
+<td align="center">2022-03</td>
+<td align="center">0.5010%</td>
+<td align="center">0.6471%</td>
+</tr>
+<tr>
+<td align="center">2022-02</td>
+<td align="center">0.2396%</td>
+<td align="center">0.2176%</td>
+</tr>
+<tr>
+<td align="center">2022-01</td>
+<td align="center">0.5159%</td>
+<td align="center">0.2991%</td>
+</tr>
+<tr>
+<td align="center">2021-12</td>
+<td align="center">0.9138%</td>
+<td align="center">0.8263%</td>
+</tr>
+<tr>
+<td align="center">2021-11</td>
+<td align="center">2.1750%</td>
+<td align="center">1.4962%</td>
+</tr>
+<tr>
+<td align="center">2021-10</td>
+<td align="center">1.9911%</td>
+<td align="center">2.2433%</td>
+</tr>
+<tr>
+<td align="center">2021-09</td>
+<td align="center">1.1533%</td>
+<td align="center">1.5708%</td>
+</tr>
+<tr>
+<td align="center">2021-08</td>
+<td align="center">1.1596%</td>
+<td align="center">1.5107%</td>
+</tr>
+<tr>
+<td align="center">2021-07</td>
+<td align="center">-0.1741</td>
+<td align="center">0.5289%</td>
+</tr>
+<tr>
+<td align="center">2021-06</td>
+<td align="center">0.2416%</td>
+<td align="center">0.5009%</td>
+</tr>
+<tr>
+<td align="center">2021-05</td>
+<td align="center">2.2980%</td>
+<td align="center">2.3031%</td>
+</tr>
+<tr>
+<td align="center">2021-04</td>
+<td align="center">4.5583%</td>
+<td align="center">5.4081%</td>
+</tr>
+<tr>
+<td align="center">2021-03</td>
+<td align="center">3.1657%</td>
+<td align="center">4.3239%</td>
+</tr>
+<tr>
+<td align="center">2021-02</td>
+<td align="center">7.2502%</td>
+<td align="center">8.5877%</td>
+</tr>
+<tr>
+<td align="center">2021-01</td>
+<td align="center">5.9026%</td>
+<td align="center">8.2621%</td>
+</tr>
+<tr>
+<td align="center">2020-12</td>
+<td align="center">2.1141%</td>
+<td align="center">2.9422%</td>
+</tr>
+<tr>
+<td align="center">2020-11</td>
+<td align="center">1.9167%</td>
+<td align="center">3.3277%</td>
+</tr>
+<tr>
+<td align="center">2020-10</td>
+<td align="center">0.5328%</td>
+<td align="center">1.3097%</td>
+</tr>
+<tr>
+<td align="center">2020-09</td>
+<td align="center">0.6738%</td>
+<td align="center">0.9142%</td>
+</tr>
+<tr>
+<td align="center">2020-08</td>
+<td align="center">2.4538%</td>
+<td align="center">4.0759%</td>
+</tr>
+<tr>
+<td align="center">2020-07</td>
+<td align="center">1.9295%</td>
+<td align="center">2.5625%</td>
+</tr>
+<tr>
+<td align="center">2020-06</td>
+<td align="center">0.7463%</td>
+<td align="center">0.9851%</td>
+</tr>
+<tr>
+<td align="center">2020-05</td>
+<td align="center">0.9666%</td>
+<td align="center">1.3040%</td>
+</tr>
+<tr>
+<td align="center">2020-04</td>
+<td align="center">0.0226%</td>
+<td align="center">0.8023%</td>
+</tr>
+<tr>
+<td align="center">2020-03</td>
+<td align="center">-0.4533</td>
+<td align="center">1.0397%</td>
+</tr>
+<tr>
+<td align="center">2020-02</td>
+<td align="center">4.5202%</td>
+<td align="center">6.1853%</td>
+</tr>
+<tr>
+<td align="center">2020-01</td>
+<td align="center">1.7774%</td>
+<td align="center">2.0163%</td>
+</tr>
+<tr>
+<td align="center">2019-12</td>
+<td align="center">0.1871%</td>
+<td align="center">0.8711%</td>
+</tr>
+<tr>
+<td align="center">2019-11</td>
+<td align="center">0.6138%</td>
+<td align="center">-0.0344%</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2022/03/09/20220309-%E6%80%8E%E6%A0%B7%E6%89%8D%E8%83%BD%E5%9C%A8%E6%8A%95%E8%B5%84%E5%B8%82%E5%9C%BA%E8%B5%9A%E5%88%B0%E5%A4%A7%E9%92%B1%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -894,77 +1148,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2022/01/04/20220104-%E6%AF%94%E7%89%B9%E5%B8%812022%E5%B9%B4%E8%B5%B0%E5%8A%BF%E5%88%86%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Haoxueren">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="好学人的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/04/20220104-%E6%AF%94%E7%89%B9%E5%B8%812022%E5%B9%B4%E8%B5%B0%E5%8A%BF%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">比特币2022年走势分析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-01-04 16:58:07" itemprop="dateCreated datePublished" datetime="2022-01-04T16:58:07+08:00">2022-01-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="2022-01-04"><a href="#2022-01-04" class="headerlink" title="2022.01.04"></a>2022.01.04</h1><p>比特币月线的波浪划分：</p>
-<blockquote>
-<p>一浪：2018.12 ~ 2019.06<br>二浪：2019.06 ~ 2020.03<br>三浪：2020.03 ~ 2021.04<br>四浪：2021.04 ~ 2022.01?<br>五浪：2022.01 ~ 2022.08?</p>
-</blockquote>
-<p>我认为比特币的走势，目前处于四浪调整中，而且是一个非常强势的四浪调整(因为4b浪创了新高)。接下来有以下两种可能性：</p>
-<p>1）由于二浪调整的时间为9个月，若四浪调整也为9个月的话，那本月(2022.01)调整就会结束，开始五浪上涨。</p>
-<p>2）四浪调整目前已持续了9个月，周线结构为14-16-?结构，若为14-16-18结构，则调整将于2022.03.14结束。</p>
-<p>综合考虑，我倾向于认为本轮调整会在2022年2~3月结束，最迟不会超过4月(调整时间不会超过三浪长度)。</p>
-<p><strong>结论：本轮调整最迟将于2022年3月结束。</strong></p>
-<h1 id="2022-02-12"><a href="#2022-02-12" class="headerlink" title="2022.02.12"></a>2022.02.12</h1><p>比特币月线时间定量分析：</p>
-<p>1）在2017年大牛市结束后，从月线上看，比特币分别经历了3轮调整：第一轮为2017.12~2012.12，共持续12个月；第二轮为2019.06~2020.03，共持续9个月；第三轮(本轮)为2021.04~2022.01，也是9个月。所以2022.01是否代表调整已经结束了呢？我认为2022.01这里至少是一个阶段性低点(双底之一)。</p>
-<p>2）根据我的预测模型分析，这波调整最可能持续10~11个月，底部通常是复杂的，我认为这里对应2020.03月附近的双底结构，会分别在2022.01与2022.03形成双底结构。另外用我的波动率模型计算，也显示本轮调整将持续10.5个月，调整结束后将上涨7.69个月，与上面的结论相似。</p>
-<p>3）从月线形态上看，这里是一个非常强势的ABC调整(B反弹创了新高)，可以预期后续将有一个相当强的5浪。</p>
-<p><strong>结论：目前比特币正处于筑底阶段，预计2022.03筑底结束，开启新一轮的上涨行情，预计会持续7~10个月，对应2022.08~2022.11月。</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1034,7 +1217,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">137</span>
+          <span class="site-state-item-count">138</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
