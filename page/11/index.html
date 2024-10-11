@@ -151,6 +151,196 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2018/06/21/20180621-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F%E7%AE%A1%E7%90%86%E4%BB%93%E4%BD%8D%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/21/20180621-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F%E7%AE%A1%E7%90%86%E4%BB%93%E4%BD%8D%EF%BC%9F/" class="post-title-link" itemprop="url">如何使用凯利公式管理仓位？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-21 07:49:00" itemprop="dateCreated datePublished" datetime="2018-06-21T07:49:00+08:00">2018-06-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/images/kelly_formula.jpg"></p>
+<h1 id="凯利公式简介"><a href="#凯利公式简介" class="headerlink" title="凯利公式简介"></a>凯利公式简介</h1><p><strong>(1) 凯利公式</strong></p>
+<p>凯利公式由John L.Kelly.Jr于1956年发表在《贝尔系统技术期刊》上，用于计算特定赌局中的下注比例，以使用户的资金增长率达到最大化。</p>
+<p>凯利公式的原始表达式如下：</p>
+<blockquote>
+<p>f* = ( kp - 1 ) / ( k - 1 )</p>
+</blockquote>
+<p><em>其中p代表胜率，k代表毛赔率。</em></p>
+<p><strong>(2) 毛赔率</strong></p>
+<p>毛赔率指包含本金的赔率。比如单次下注1元，赌输时损失1元，赌赢时获得3元(包含下注的1元)。则本次赌局的毛赔率为3:1，净赔率为2:1，净利润为2元。</p>
+<p><strong>(3) 应用举例</strong></p>
+<p>假设有一场赌局，每次下注的胜率为60%，赌输时损失全部下注金额，赌赢时可获得3倍的下注金额(含下注金额)。</p>
+<p>请问每次应下注多大金额，才能使资金的增值速度最快？</p>
+<p>在这场赌局中，胜率p=60%，毛赔率k=3，代入凯利公式计算，可求得最佳下注比例：f* = 40%</p>
+<p>即每次拿剩余资金的40%下注，可使资金的增值速度最快。</p>
+<h1 id="凯利公式在投资中的应用"><a href="#凯利公式在投资中的应用" class="headerlink" title="凯利公式在投资中的应用"></a>凯利公式在投资中的应用</h1><p><strong>(1) 凯利变形式</strong></p>
+<p>由上述分析可知净赔率 = 毛赔率 - 1，现设赌局的净赔率为b，则b=k-1；设赌局输掉的概率为q，则q=1-p。</p>
+<p>将以上变形式代入 f* = (kp-1) / (k-1)，化简得到凯利公式的等价式如下：</p>
+<blockquote>
+<p>f* = ( bp - q ) / b</p>
+</blockquote>
+<p>其中p代表赌赢率，q代表赌输率，b代表净赔率。</p>
+<p><strong>(2) 应用举例</strong></p>
+<p>假设有一个投资机会，止盈(Win)W=10%，上损(Loss)L=20%，盈利的概率为p=70%，我们应该拿多少资金来建仓呢？</p>
+<p>在这笔投资中，胜率p=70%，净赔率b=0.5(b=W/L)，代入公式 f=(bp-q)/b 计算：f=10%</p>
+<p><strong>(3) 仓位计算公式</strong></p>
+<p>凯利公式的本质是对风险的管理，f=10%*表示我们应该用剩余资金的10%去冒险，即止损金额应为剩余资金的10%。</p>
+<p>根据公式”风险额度 = 仓位 * 止损百分比”可知：</p>
+<blockquote>
+<p>仓位 = 风险额度 / 止损百分比</p>
+</blockquote>
+<p>因此，这笔投资我们的仓位应为：M=f*/L=50%</p>
+<p>我们将b=W/L代入仓位计算公式：M=f*/L，化简后如下：</p>
+<blockquote>
+<p>M = ( pW - qL ) / WL</p>
+</blockquote>
+<p>其中p代表胜率，q代表败率，W代表止盈百分比，L代表止损百分比。</p>
+<p>代入公式验证一下，结果仍然是50%。</p>
+<p><strong>(4) 凯利公式与杠杆</strong></p>
+<p>由于凯利公式计算的是冒险资金的比例，因此，在盈利期望值较大或止损百分比较小的情况下，可以会出现仓位大于100%的情况。</p>
+<p>举例：现有一个投资机会，胜率为60%，止损为10%，止盈为10%。</p>
+<p>代入公式 (pW-qL)/WL计算，得到最佳仓位M=200%。</p>
+<p>根据凯利公式计算，这笔投资应该使用剩余资金的20%冒险，但由于止损百分比为10%，所以仓位应为200%(可借助杠杆)。</p>
+<p>【完】</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2018/06/14/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E7%A9%B6%E7%AB%9F%E6%9C%89%E5%A4%9A%E6%9A%B4%E5%88%A9%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Haoxueren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好学人的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/14/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E7%A9%B6%E7%AB%9F%E6%9C%89%E5%A4%9A%E6%9A%B4%E5%88%A9%EF%BC%9F/" class="post-title-link" itemprop="url">2018年王团长见面会：量化交易究竟有多暴利？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-14 07:50:00" itemprop="dateCreated datePublished" datetime="2018-06-14T07:50:00+08:00">2018-06-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="韭菜头子王团长"><a href="#韭菜头子王团长" class="headerlink" title="韭菜头子王团长"></a>韭菜头子王团长</h1><p>2018年5月20日，大智吃过午饭，用高德地图查了出行路线，就匆匆出发了！</p>
+<p>下午2:30左右，大智已经赶到了壹城空间，向门口保安问了路，便向里走去。</p>
+<p>现场很多人都已经到了，大智挤到后排，找了个座位坐下，就跟旁边一位天津来的小哥攀谈起来，一通唾液横飞的吹牛逼之后，天津小哥对大智很是佩服，加了大智的微信，表示以后要向大智多多请教。</p>
+<p>吹牛逼的时间总是短暂的，不一会儿就到了下午3点，韭菜头子王团长上台演讲了。</p>
+<p>王团长很是清瘦，上身一件大一号的T恤，直接遮住了屁股，下身一件松跨跨的裤子。</p>
+<p>人不可貌相啊，原来这就是天天喊着有钱了要去会所嫩模的韭菜头子。</p>
+<p>王团长先是讲了自己艰苦奋斗的经历，又讲了小团科技的宏伟梦想，然后悲壮地表示，自己竞选EOS节点其实希望十分渺茫。</p>
+<p>大智心想，没希望你还扯个犊子！后转念一想，这是在借势营销啊，不愧是营销出身，高！</p>
+<p>大智一边张望会场里漂亮的小姐姐，一边琢磨着，好酒也怕巷子深，以后要多学些营销知识。</p>
+<p>演讲快结束时，王团长说给自己的产品做个广告：“我们公司最近推出了一款基于量化交易的理财产品，保本，年收益50%，50万起投。”</p>
+<p>“我们请了很多专业的人来做这个事情，前几天跟公司的同事聊天，才知道我们这款产品，在上月市场跌了那么多的情况下，依然获得了30%多的收益。“王团长接着说。</p>
+<p>”请大家放心，你们的信任是我最宝贵的财富，王团长不会做伤害粉丝信任的事情。对我们产品感兴趣的同学，可以扫码加屏幕上的微信，我们的同事会与大家对接。”王团长最后补充。</p>
+<p>大智打了个激灵，暗自忖道：“我×，量化交易这么赚钱？回去我也要搞一搞！”</p>
+<h1 id="量化交易研究"><a href="#量化交易研究" class="headerlink" title="量化交易研究"></a>量化交易研究</h1><p>见面会结束后，大智与大家寒暄了一会儿，就找了辆摩拜奔向地铁。</p>
+<p>大智回想起大学时的炒股票(外汇)经历，当时学习过一些量化交易的知识，为了构建交易系统，还读了《海龟交易法则》。</p>
+<p>一进地铁，大智就掏出手机，搜索起关于量化交易的知识来。</p>
+<p>大智先是搜索了“量化交易”、“量化交易策略”、“量化交易模型”、“量化交易仓位管理”等关键词，把感兴趣的文章读了一遍。</p>
+<p>然后，又到京东(淘宝)找了一些关于量化交易的书籍，下单买了几本。</p>
+<p>买完书，大智又陷入了对量化交易的思考之中，一番思索后，大智认为，目前的数字货币市场很适合量化交易。</p>
+<blockquote>
+<p>1、目前的数字货币市场7×24小时交易，没有涨跌幅限制，又不像股票那样受T+1的限制。<br>2、目前的数字货币市场还是一个新兴市场，大型的量化基金，套利机构还都没有入场，不像外汇市场那样竞争激烈。<br>3、如果有一天大型的投资机构都入场套利的话，普通的量化策略就很难赚到钱了。</p>
+</blockquote>
+<p>正好自己会Python，又懂一点机器学习知识，回去要好好搞一搞，赚钱的机会不能错过。</p>
+<p>想完这些，大智很激动，仿佛财务自由之路就在眼前。</p>
+<h1 id="量化交易实战"><a href="#量化交易实战" class="headerlink" title="量化交易实战"></a>量化交易实战</h1><p>晚上回到家，大智陪小慧吃了晚饭，看了场电影。</p>
+<p>大智躺到床上，想着想着就睡着了。当天夜里，做了个美美的梦：</p>
+<p>大智梦到自己开发出了一套稳定盈利的交易系统，每天都能赚好几千块。</p>
+<p>于是就辞了工作，想到终于有时间做自己喜欢的事情，忍不住欢呼雀跃起来。</p>
+<p>这一雀跃不当紧，一不小心踢到墙，醒了。摸到手机看了看，才凌晨2点多。</p>
+<p>接下来几天，大智找出了炒股时的研究资料，使用自创的时间拐点理论和徐小明的1234空间阻力理论，构建了一套简单的量化交易系统。</p>
+<p>然后马不停蹄地进行了几笔交易，结果还都不错！</p>
+<p>–END–</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2018/06/08/20180608-%E6%B7%B1%E5%85%A5%E6%80%9D%E8%80%83EOS%E7%9A%84%E9%A3%8E%E9%99%A9%E4%B8%8E%E6%8C%91%E6%88%98-%E4%B8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -996,268 +1186,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2018/05/10/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E9%9F%B3%E9%A2%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Haoxueren">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="好学人的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/10/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E9%9F%B3%E9%A2%91/" class="post-title-link" itemprop="url">手把手教你在文章中插入音频</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-05-10 07:50:00" itemprop="dateCreated datePublished" datetime="2018-05-10T07:50:00+08:00">2018-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="内容导读"><a href="#内容导读" class="headerlink" title="内容导读"></a>内容导读</h1><p>最近在币乎看到了几篇音频文章，觉得蛮有意思的。</p>
-<p>好奇的大智先生小小研究了一下，发现插入音频是很简单的一件事儿。</p>
-<p>有多简单呢？3行代码搞定！</p>
-<p>下面插入了一个小音频，大家感受一下效果：</p>
-<p>音频标题：《荀子 | 劝学篇》</p>
-<audio controls="controls">
-    <source src="http://fdfs.xmcdn.com/group43/M08/62/B3/wKgKjVrzBsiAMtRIAFuaye2NeGE832.mp3">
-</audio>
-
-<p>多学一样技能，就少说一句求人的话。</p>
-<p>接下来，大智先生就把这个新技能分享给大家，包教包会！</p>
-<h1 id="一-上传音频文件到喜马拉雅"><a href="#一-上传音频文件到喜马拉雅" class="headerlink" title="(一) 上传音频文件到喜马拉雅"></a>(一) 上传音频文件到喜马拉雅</h1><p>要想将本地的音频插入到文章中，我们需要将音频文件上传到网络服务器上。</p>
-<p>经大智先生多方实践，推荐大家将音频上传到喜马拉雅平台，音质清晰，播放流畅。</p>
-<p>上传方法请参考官方帮助文档：《如何在网页端上传我的声音？》</p>
-<p>上传成功后，打开音频播放页(如下图)，获取到音频的播放地址：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="http://www.ximalaya.com/73168134/sound/87558744/">http://www.ximalaya.com/73168134/sound/87558744/</a></p>
-</blockquote>
-<h1 id="二-提取音频文件的真实地址"><a href="#二-提取音频文件的真实地址" class="headerlink" title="(二) 提取音频文件的真实地址"></a>(二) 提取音频文件的真实地址</h1><p>播放地址并不能直接使用，我们需要提取出音频文件的真实地址。</p>
-<p>我们可以使用傲游浏览器的资源嗅探器来获得音频的下载地址。</p>
-<p>音频文件的真实地址：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="http://fdfs.xmcdn.com/group43/M08/62/B3/wKgKjVrzBsiAMtRIAFuaye2NeGE832.mp3">http://fdfs.xmcdn.com/group43/M08/62/B3/wKgKjVrzBsiAMtRIAFuaye2NeGE832.mp3</a></p>
-</blockquote>
-<h1 id="三-将音频插入到文章中"><a href="#三-将音频插入到文章中" class="headerlink" title="(三) 将音频插入到文章中"></a>(三) 将音频插入到文章中</h1><p>有了音频文件的真实地址，接下来的操作就很简单了。</p>
-<p>只需要把以下3行代码复制到文章相应的位置，使用Markdown渲染一下，就会自动生成音频播放器了！</p>
-<audio controls="controls">
-    <source src="音频文件的真实地址">
-</audio>
-
-
-<blockquote>
-<p><audio>是HTML语法中用来播放音频的标签。</p>
-<p>audio adj. 声音的；[声] 音频的，[声] 声频的</p>
-</blockquote>
-<p>不了解Markdown的同学，请参考：《让币乎编辑器支持Markdown语法，超详细！》</p>
-<h1 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h1><p>以上是基本用法，还有一些高级属性，简介如下：</p>
-<p><strong>(1) 显示隐藏</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls=&quot;controls&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;audio_url&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>controls：用于显示或隐藏播放控件，设置则正常显示，不设置则不显示。</p>
-</blockquote>
-<p><strong>(2) 自动播放</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls=&quot;controls&quot; autoplay=&quot;autoplay&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;audio_url&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>autoplay：一旦音频就绪马上开始播放。如果设置了该属性，音频将自动播放。</p>
-</blockquote>
-<p><strong>(3) 循环播放</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls=&quot;controls&quot; loop=&quot;loop&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;audio_url&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>loop：设置该属性，音频会循环播放。</p>
-</blockquote>
-<p><strong>(4) 自动预加载</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls=&quot;controls&quot; preload=&quot;load&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;audio_url&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>preload：打开页面后，自动加载音频，并预备播放。</p>
-</blockquote>
-<p>参考资料：<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_audio.asp">HTML &lt;audio&gt; 标签</a></p>
-<p>–END–</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://haoxueren.github.com/2018/05/04/20180504-%E5%A6%82%E4%BD%95%E7%AA%81%E7%A0%B4%E8%B5%84%E6%9C%AC%E9%87%8F%E7%BA%A7%E7%9A%84%E5%B7%AE%E5%BC%82%EF%BC%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Haoxueren">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="好学人的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/04/20180504-%E5%A6%82%E4%BD%95%E7%AA%81%E7%A0%B4%E8%B5%84%E6%9C%AC%E9%87%8F%E7%BA%A7%E7%9A%84%E5%B7%AE%E5%BC%82%EF%BC%9F/" class="post-title-link" itemprop="url">如何突破资本量级的差异？</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-05-04 07:50:00" itemprop="dateCreated datePublished" datetime="2018-05-04T07:50:00+08:00">2018-05-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="内容导读"><a href="#内容导读" class="headerlink" title="内容导读"></a>内容导读</h1><p>在数字货币市场，资本量级的巨大差异，映射到投资收益上，往往是天壤之别。</p>
-<p>本文将抽象问题具体化，把资本量级差异这个抽象问题，转换为<strong>增加资金量</strong>和<strong>提高收益率</strong>两个具体问题。</p>
-<p>然后各个击破，分别给出了<strong>场外循环融资法</strong>和<strong>选币方法论</strong>两个解决方案。</p>
-<h1 id="资本量级的差异"><a href="#资本量级的差异" class="headerlink" title="资本量级的差异"></a>资本量级的差异</h1><p>有个段子，用来形容资本量级的差异很贴切：</p>
-<blockquote>
-<p>王思聪他爹给了他5个亿，他赚了40亿，翻了8倍。</p>
-<p>我爹给了我2块钱，我买了幅手套去了工地，搬砖赚了180块，翻了90倍。</p>
-<p>事实证明：其实我能力还是有的，只是启动资金少了点。</p>
-</blockquote>
-<p>上面的段子虽然不是很贴切，却是能说明问题的。</p>
-<p>下面再给大家看一个大智先生自身的案例：</p>
-<blockquote>
-<p>从2018年3月20日到2018年4月30日，大智先生的账户资产从22万增值到了75万，资产增值了3.4倍。</p>
-<p>再看王团长，根据《王团长区块链日记》中的数据，在此期间，王团的账户资产从205万，增值到了488万，资产增值2.4倍。</p>
-</blockquote>
-<p>我们做的是同样的事情(选币+持币不动)，从资产增值速度这方面来看，我做得还要好一些。</p>
-<p>但结果是，这期间王团长我多赚了230万，我们的贫富差距更大了！</p>
-<p>230万，意味着大智先生每天工作八小时，连续10年的工资收入！</p>
-<p>意味着王团长可以香车美女的时候，我还要计算着自己的房贷何时才能还完！</p>
-<p>你看，我做得并不差，结果却令人嘘唏！</p>
-<p>这是个值得思考的问题！</p>
-<h1 id="如何解决资本量级的差异？"><a href="#如何解决资本量级的差异？" class="headerlink" title="如何解决资本量级的差异？"></a>如何解决资本量级的差异？</h1><p>猫与老虎，本是同根同源，由于一个偶然的机会分道扬镳，各自进化成了体型迥异的两个物种，因此，两者的战斗力也拉开了巨大的差距。</p>
-<p>小猫咪要如何才能战胜大老虎呢？</p>
-<p>大智先生认为，有两条路可走：</p>
-<blockquote>
-<p>1、大吃狂吃，长成像老虎一样的大体型；</p>
-<p>2、习文弄武，把自己变成文武双全猫咪。</p>
-</blockquote>
-<p>受自然规律的限制，猫咪的梦想基本无法实现，但同样的思路，却可以用来解决资本量级差异的问题。</p>
-<p>投资与收益的关系，可以用一个公式来概括：</p>
-<blockquote>
-<p>投资收益 = 资金量 * 收益率</p>
-</blockquote>
-<p>由公式可以看出，决定我们收益的，有两个关键因素：资金量和收益率。</p>
-<p>因此，我们的解决方案就呼之欲出了：</p>
-<blockquote>
-<p>1、增加我们的资金量。</p>
-<p>2、提升我们的收益率。</p>
-</blockquote>
-<p>下面就详细介绍下这两种解决方案，并给出的具体可行的步骤。</p>
-<h1 id="增加资金量"><a href="#增加资金量" class="headerlink" title="增加资金量"></a>增加资金量</h1><p>这是最直接的解决方案，简单粗暴，但快速见效。</p>
-<p>增加资金量的方法有很多种，比如借贷、融资、杠杆等。</p>
-<p>但是，大智先生不建议大家借钱投资或使用场内杠杆。</p>
-<p>因为借钱受时间限制，一旦资金到期，无论盈亏，必须清仓还钱。</p>
-<p>使用场内杠杆受空间限制，极端的行情可能刺穿你的止损线，把你清除出局。</p>
-<p>但幸运的是，我们生活在互联网金融发达的社会，普通人也可以利用金融工具，为自己融到不受时间和空间限制的资金。</p>
-<p>具体方法如下：</p>
-<p>很多互联网金融产品，都会为我们提供一定的借贷额度。</p>
-<p>假如你的蚂蚁借呗有10万额度，百度钱包有10万额度。</p>
-<p>那么你可以直接把蚂蚁借呗的10万借出来用于投资，然后用百度钱包的额度偿还蚂蚁借呗的还款，二者的额度相互循环，你就可以长期使用这笔资金。</p>
-<p>没错，无需担心还款问题，你只需要支付每期的利息就可以。</p>
-<p>现在很多贷款额度都是循环额度，这意味着你可以借出更多的资金。</p>
-<p><em>不过要注意借款利率哦！</em></p>
-<h1 id="提高收益率"><a href="#提高收益率" class="headerlink" title="提高收益率"></a>提高收益率</h1><p>增加投资本金，固然简单有效，但其增长是线性的。</p>
-<p>提高投资收益率，虽然前期资产增值不明显，但你的资产增值速度是指数级的。</p>
-<p>如果你把这个维度的能力提升上来了，你很快就会明白什么叫降维打击。</p>
-<p>假设对方的资金量是你的10倍，你的收益率是对方的2倍，如果每个周期对方的投资收益率为100%，那你的投资收益率就是200%。</p>
-<p>在这个前提下，只需要经过6个周期，你的总资产就会超过对方，然后一骑绝尘，让对方从此难以望你项背。</p>
-<p>计算过程如下：</p>
-<blockquote>
-<p>你的资金增长曲线：y1 = 10*(1+200%)^x</p>
-<p>对方的资金增长曲线：y2 = 1*(1+100%)^x</p>
-</blockquote>
-<p>提高收益率自然是极好的，但我们应该怎么做呢？</p>
-<p>下面大智先生就把自己的选币方法论分享给大家，供大家参考：</p>
-<p>大智先生认为，选币，其实和选对象是一样的。</p>
-<p>应该遵循两个重要的原则：</p>
-<blockquote>
-<p>要么有钱，有么有才华，最好二者兼备。</p>
-</blockquote>
-<p>如果二者兼得，那绝对是不可多得的宝贝，一定要想尽一切办法抱回家，抱着不放。</p>
-<p>具体到选币上，也是同样的道理，要么资金实力雄厚，要么技术上有重大创新。</p>
-<p>举个例子：</p>
-<p>当年的BTC，是个才华横溢的小伙子，多少年不受人待见。你看现在，已经是位高权重，子孙满堂了。</p>
-<p>比如NANO，最初是一个程序员利用业余时间开发的，凭借着创新的DGA技术，实现了支付秒级到账，也因此，NANO曾经一月暴涨300倍！</p>
-<p>光是这点，足以秒杀BCH、LTC等一众支付币。</p>
-<p>再比如EOS，已融资约520万个ETH，以当前ETH价格计算，价值37亿美元，这是超级巨富好吗？</p>
-<p>再加上EOS有BM护航，有着不错的技术背景，简单就是豪门大才子啊！</p>
-<p>现在，你知道为什么那么多人看好EOS了吧？</p>
-<p><em>钱不是万能的，但有钱，确实是无可比拟的优势。</em></p>
-<p><strong>2022.03.24更新：</strong></p>
-<p>有关系也很重要哦，对应到选币方面，就是要看这个币的生态。</p>
-<p>比如络绎不绝的ETH杀手，即不缺资金，也不缺技术，但最后都死在了没生态上。</p>
-<p>编程语言上也是如此，这么多年，多少Java的挑战者，有谁成功了吗？没有！</p>
-<p>Java仍然稳坐钓鱼台！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1323,14 +1255,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">141</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
